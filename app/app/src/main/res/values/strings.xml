@@ -1,5 +1,9 @@
 <resources>
     <string name="app_name">Goiás Tropical</string>
-    <string name="entra">Entra</string>
-    <string name="avisoLogin">Você ainda não esta logado no sistema precione a tecla \"ENTRA\" para fazer login.</string>
+    <string name="entra">Entrar</string>
+    <string name="avisoLogin">Você ainda não esta logado no sistema precione a tecla \"ENTRAR\" para fazer login.</string>
+    <string name="title_activity_main2">Main2Activity</string>
+    <string name="title_home">Home</string>
+    <string name="title_dashboard">Dashboard</string>
+    <string name="title_notifications">Notifications</string>
 </resources>
