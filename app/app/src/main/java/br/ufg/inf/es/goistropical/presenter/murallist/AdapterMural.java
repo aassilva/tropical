@@ -15,8 +15,8 @@ public class AdapterMural extends RecyclerView.Adapter<AdapterMural.MuralViewHol
     private List<Mural> murals;
     private Context context;
 
-    public AdapterMural(List<Mural> tasks, Context context){
-        this.murals = tasks;
+    public AdapterMural(List<Mural> murals, Context context){
+        this.murals = murals;
         this.context = context;
     }
 
@@ -50,8 +50,8 @@ public class AdapterMural extends RecyclerView.Adapter<AdapterMural.MuralViewHol
         return tasks;
     }
 
-    public void setTasks(List<Task> tasks) {
-        this.tasks = tasks;
+    public void setMural(List<Mural> murals) {
+        this.murals = murals;
     }
 
     public static class TodoViewHolder

@@ -9,7 +9,6 @@
         android:id="@+id/avatar"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:src="@drawable/attention"
         />
 
     <TextView
@@ -17,7 +16,6 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:maxLines="2"
-        android:text="Título"
         android:textStyle="bold"
         android:gravity="center"
         android:textSize="16sp"/>
@@ -26,7 +24,6 @@
         android:id="@+id/label_task_desc"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Descrição"
         android:maxLines="3"
         android:textSize="14sp"/>
 

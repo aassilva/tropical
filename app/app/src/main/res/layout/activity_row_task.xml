@@ -35,20 +35,22 @@
         tools:ignore="MissingConstraints" />
 
 
+    <!--Aqui-->
     <FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
         xmlns:tools="http://schemas.android.com/tools"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         xmlns:app="http://schemas.android.com/apk/res-auto"
         tools:context="br.ufg.inf.es.goistropical.presenter.murallist.MuralListFragment"
-        android:layout_marginTop="65dp">
+        android:layout_marginTop="65dp"
+        android:id="@+id/recycler_view_mural">
 
         <android.support.v7.widget.RecyclerView
-            android:id="@+id/recycler_view_mural"
+
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:layout_below="@+id/toolbar_container"
-            app:layout_behavior="@string/appbar_scrolling_view_behavior"/>
+            />
 
     </FrameLayout>
 
