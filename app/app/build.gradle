@@ -21,8 +21,9 @@ android {
 
 dependencies {
     implementation fileTree(dir: 'libs', include: ['*.jar'])
-    implementation 'com.android.support:appcompat-v7:27.1.1'
+    //implementation 'com.android.support:appcompat-v7:27.1.1'
     implementation 'com.android.support.constraint:constraint-layout:1.1.2'
+    //noinspection GradleCompatible
     implementation 'com.android.support:design:27.1.1'
     implementation 'com.android.support:support-vector-drawable:27.1.1'
     testImplementation 'junit:junit:4.12'
@@ -30,4 +31,20 @@ dependencies {
     androidTestImplementation 'com.android.support.test.espresso:espresso-core:3.0.2'
     //Material Dialog
     compile 'com.afollestad.material-dialogs:core:0.9.3.0'
+
+    compile fileTree(dir: 'libs', include: ['*.jar'])
+
+    //View e compatibility
+    //compile 'com.android.support:support-v4:24.0.0'
+    //compile 'com.android.support:design:24.0.0'
+    //compile 'com.android.support:appcompat-v7:24.0.0'
+
+    //Web connection
+    compile 'com.squareup.okhttp3:okhttp:3.6.0'
+
+    //EventBus
+    compile 'org.greenrobot:eventbus:3.0.0'
+
+    //Image loading
+    compile 'com.github.bumptech.glide:glide:3.7.0'
 }
