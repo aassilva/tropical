@@ -75,4 +75,5 @@ public class AdapterMural extends RecyclerView.Adapter<AdapterMural.MuralViewHol
             imageView = (AppCompatImageView)itemView.findViewById(R.id.avatar_new);
         }
     }
+
 }

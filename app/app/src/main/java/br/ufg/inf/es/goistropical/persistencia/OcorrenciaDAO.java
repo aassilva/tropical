@@ -18,6 +18,7 @@ public class OcorrenciaDAO extends SQLiteOpenHelper {
     private static final String TABLE_OCORRENCIA = "Ocorrencia";
 
     private static final String ROW_ID = "id";
+    private static final String ROW_TITLE = "titulo";
     private static final String ROW_DESCRIPTION = "descricao";
     private static final String ROW_STATUS = "status";
     private static final String ROW_LOCATION = "lacalizacao";
@@ -32,6 +33,7 @@ public class OcorrenciaDAO extends SQLiteOpenHelper {
         String CREATE_CONTACTS_TABLE = "CREATE TABLE "
                 + TABLE_OCORRENCIA + "("
                 + ROW_ID + " TEXT,"
+                + ROW_TITLE + "TEXT,"
                 + ROW_DESCRIPTION + " TEXT,"
                 + ROW_STATUS + "TEXT,"
                 + ROW_LOCATION + "TEXT,"
@@ -52,6 +54,7 @@ public class OcorrenciaDAO extends SQLiteOpenHelper {
 
         ContentValues values = new ContentValues();
         values.put(ROW_ID, ocorrencia.getId());
+        values.put(ROW_TITLE, ocorrencia.getTitulo());
         values.put(ROW_DESCRIPTION, ocorrencia.getDescricao());
         values.put(ROW_STATUS, ocorrencia.getStatus());
         values.put(ROW_LOCATION, ocorrencia.getLocalizacao());
@@ -74,10 +77,11 @@ public class OcorrenciaDAO extends SQLiteOpenHelper {
             do {
                 Ocorrencia ocorrencia = new Ocorrencia();
                 ocorrencia.setId(Integer.parseInt(cursor.getString(0)));
-                ocorrencia.setDescricao(cursor.getString(1));
-                ocorrencia.setStatus(cursor.getString(2));
-                ocorrencia.setLocalizacao(cursor.getString(3));
-                ocorrencia.setCategoria(cursor.getString(4));
+                ocorrencia.setTitulo(cursor.getString(1));
+                ocorrencia.setDescricao(cursor.getString(2));
+                ocorrencia.setStatus(cursor.getString(3));
+                ocorrencia.setLocalizacao(cursor.getString(4));
+                ocorrencia.setCategoria(cursor.getString(5));
                 newsList.add(ocorrencia);
             } while (cursor.moveToNext());
         }

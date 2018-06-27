@@ -2,10 +2,19 @@ package br.ufg.inf.es.goistropical.model;
 
 public class Ocorrencia {
     private int id;
+    private String titulo;
     private String descricao;
     private String status;
     private String localizacao;
     private String categoria;
+
+    public String getTitulo() {
+        return titulo;
+    }
+
+    public void setTitulo(String titulo) {
+        this.titulo = titulo;
+    }
 
     public int getId() {
         return id;

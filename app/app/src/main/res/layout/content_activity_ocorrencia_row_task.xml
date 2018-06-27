@@ -6,28 +6,25 @@
 
 
     <TextView
-        android:id="@+id/label_task_title"
+        android:id="@+id/label_task_id"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:maxLines="2"
-        android:text="ID"
         android:textStyle="bold"
         android:textSize="16sp"/>
 
     <TextView
-        android:id="@+id/label_task_desc"
+        android:id="@+id/label_task_title"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Descrição"
-        android:maxLines="3"
-        android:textSize="14sp"/>
+        android:maxLines="2"
+        android:textStyle="bold"
+        android:textSize="16sp"/>
+
 
     <TextView
         android:id="@+id/label_task_status"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Status"
-        android:maxLines="3"
         android:textSize="14sp"/>
 
 </LinearLayout>

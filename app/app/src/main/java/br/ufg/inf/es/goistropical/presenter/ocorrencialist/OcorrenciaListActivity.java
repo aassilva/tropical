@@ -1,25 +1,24 @@
-package br.ufg.inf.es.goistropical.presenter.murallist;
+package br.ufg.inf.es.goistropical.presenter.ocorrencialist;
 
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentTransaction;
 import android.support.v4.content.ContextCompat;
-import android.support.v4.content.IntentCompat;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
 
 import br.ufg.inf.es.goistropical.R;
-import br.ufg.inf.es.goistropical.presenter.ocorrencialist.OcorrenciaListActivity;
+import br.ufg.inf.es.goistropical.presenter.murallist.MuralListActivity;
 
-public class MuralListActivity extends AppCompatActivity {
+public class OcorrenciaListActivity extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_row_task);
+        setContentView(R.layout.activity_ocorrencia_row_task);
 
         initToolbar();
         initView();
@@ -51,8 +50,8 @@ public class MuralListActivity extends AppCompatActivity {
         FragmentManager fragmentManager = getSupportFragmentManager();
         FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
 
-        MuralListFragment fragment = new MuralListFragment();
-        fragmentTransaction.add(R.id.recycler_view_mural, fragment);
+        OcorrenciaListFragment fragment = new OcorrenciaListFragment();
+        fragmentTransaction.add(R.id.recycler_view_ocorrencia, fragment);
         fragmentTransaction.commit();
     }
 
@@ -74,10 +73,10 @@ public class MuralListActivity extends AppCompatActivity {
 
             //Case para a opção mural.
             case R.id.navigation_mural:
+                Intent nova = new Intent(getApplicationContext(), MuralListActivity.class);
+                startActivity(nova);
                 return true;
             case R.id.navigation_ocorrencia:
-                Intent nova = new Intent(getApplicationContext(), OcorrenciaListActivity.class);
-                startActivity(nova);
                 return true;
             default:
                 return super.onOptionsItemSelected(item);
@@ -88,6 +87,6 @@ public class MuralListActivity extends AppCompatActivity {
 //            finish();
 //        }
 
-       // return super.onOptionsItemSelected(item);
+        // return super.onOptionsItemSelected(item);
     }
 }
