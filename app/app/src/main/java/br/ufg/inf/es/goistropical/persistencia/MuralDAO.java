@@ -10,6 +10,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import br.ufg.inf.es.goistropical.model.Mural;
+import br.ufg.inf.es.goistropical.web.MuralWeb;
 
 public class MuralDAO extends SQLiteOpenHelper {
 
@@ -81,6 +82,8 @@ public class MuralDAO extends SQLiteOpenHelper {
                 mural.setImagem(cursor.getString(4));
                 newsList.add(mural);
             } while (cursor.moveToNext());
+        } else {
+            MuralWeb mural = new MuralWeb("123");
         }
 
         return newsList;
