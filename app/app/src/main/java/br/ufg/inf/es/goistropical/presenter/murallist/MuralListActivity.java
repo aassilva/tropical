@@ -55,7 +55,7 @@ public class MuralListActivity extends AppCompatActivity {
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
-        getMenuInflater().inflate(R.menu.navigation_mural, menu);
+        getMenuInflater().inflate(R.menu.navigation, menu);
 
         return super.onCreateOptionsMenu(menu);
 
@@ -63,10 +63,27 @@ public class MuralListActivity extends AppCompatActivity {
 
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
+
+        switch (item.getItemId()) {
+            case R.id.navigation_perfil:
+                //tela de perfil
+                return true;
+
+            //Case para a opção mural.
+            case R.id.navigation_mural:
+                return true;
+            case R.id.navigation_ocorrencia:
+                //tela de ocorrencia
+                return true;
+            default:
+                return super.onOptionsItemSelected(item);
+        }
+
+        //Aqui colocar as telas que serão direcionadas quando preciona uma opção do menu.
 //        if(item.getItemId() == android.R.id.home){
 //            finish();
 //        }
 
-        return super.onOptionsItemSelected(item);
+       // return super.onOptionsItemSelected(item);
     }
 }

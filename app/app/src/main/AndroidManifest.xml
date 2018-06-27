@@ -9,16 +9,7 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".NotLoginActivity" />
         android:theme="@style/Theme.AppCompat.Light.NoActionBar"
-        <activity
-            android:name=".Main2Activity"
-            android:label="@string/title_activity_main2" />
-        <activity android:name=".ActivityNotConex" />
-        <activity
-            android:name=".ActivityOcorrencia_row_task"
-            android:label="@string/title_activity_ocorrencia_row_task"
-            android:theme="@style/AppTheme"></activity>
     </application>
 
 </manifest>

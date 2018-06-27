@@ -13,9 +13,9 @@ import br.ufg.inf.es.goistropical.model.Mural;
 
 public class MuralDAO extends SQLiteOpenHelper {
 
-    private static final String DB_NAME = "tasks.db";
+    private static final String DB_NAME = "mural.db";
     private static final int DB_VERSION = 3;
-    private static final String TABLE_TASKS = "tasks";
+    private static final String TABLE_MURAL = "Mural";
 
     private static final String ROW_ID = "id";
     private static final String ROW_TITLE = "titulo";
@@ -31,7 +31,7 @@ public class MuralDAO extends SQLiteOpenHelper {
     @Override
     public void onCreate(SQLiteDatabase db) {
         String CREATE_CONTACTS_TABLE = "CREATE TABLE "
-                + TABLE_TASKS + "("
+                + TABLE_MURAL + "("
                 + ROW_ID + " INTEGER PRIMARY KEY AUTOINCREMENT,"
                 + ROW_TITLE + " TEXT,"
                 + ROW_DESCRIPTION + " TEXT,"
@@ -45,7 +45,7 @@ public class MuralDAO extends SQLiteOpenHelper {
     //Melhorar essa classe.
     @Override
     public void onUpgrade(SQLiteDatabase db, int oldVersion, int newVersion) {
-        db.execSQL("DROP TABLE IF EXISTS " + TABLE_TASKS);
+        db.execSQL("DROP TABLE IF EXISTS " + TABLE_MURAL);
         onCreate(db);
     }
 
@@ -58,14 +58,14 @@ public class MuralDAO extends SQLiteOpenHelper {
         values.put(ROW_CONTENT, mural.getConteudo());
         values.put(ROW_IMG, mural.getImagem());
 
-        db.insert(TABLE_TASKS, null, values);
+        db.insert(TABLE_MURAL, null, values);
         db.close();
     }
 
     public List<Mural> getAll() {
         List<Mural> newsList = new ArrayList<Mural>();
 
-        String selectQuery = "SELECT * FROM " + TABLE_TASKS;
+        String selectQuery = "SELECT * FROM " + TABLE_MURAL;
 
         SQLiteDatabase db = this.getWritableDatabase();
         Cursor cursor = db.rawQuery(selectQuery,

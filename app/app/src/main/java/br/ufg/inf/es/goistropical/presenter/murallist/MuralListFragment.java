@@ -1,6 +1,7 @@
 package br.ufg.inf.es.goistropical.presenter.murallist;
 
 import android.os.Bundle;
+import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -13,6 +14,7 @@ import org.greenrobot.eventbus.ThreadMode;
 import java.util.LinkedList;
 import java.util.List;
 
+import br.ufg.inf.es.goistropical.R;
 import br.ufg.inf.es.goistropical.model.Mural;
 import br.ufg.inf.es.goistropical.persistencia.MuralDAO;
 import br.ufg.inf.es.goistropical.presenter.BaseFragment;
@@ -30,17 +32,9 @@ public class MuralListFragment extends BaseFragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
 
-        View view = inflater.inflate(R.layout.fragment_todo, container, false);
+        View view = inflater.inflate(R.layout.activity_row_task, container, false);
 
         muralList = new LinkedList<>();
-
-        FloatingActionButton fab = (FloatingActionButton) view.findViewById(R.id.fab);
-        fab.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                add();
-            }
-        });
 
         return view;
     }
@@ -50,7 +44,7 @@ public class MuralListFragment extends BaseFragment {
         super.onStart();
         EventBus.getDefault().register(this);
         initRecycler();
-        getTasks();
+        getMurals();
     }
 
     @Override
@@ -67,7 +61,7 @@ public class MuralListFragment extends BaseFragment {
     }
 
 
-    public void getTasks(){
+    public void getMurals(){
         showDialogWithMessage(getString(R.string.load_tasks));
         MuralDAO dao = new MuralDAO(getActivity());
         adapter.setMural(dao.getAll());
@@ -94,17 +88,5 @@ public class MuralListFragment extends BaseFragment {
         adapter.setMural(dao.getAll());
         adapter.notifyDataSetChanged();
     }
-
-//    public void add(){
-//        Task task = new Task();
-//        task.setName("NEW");
-//        task.setDescription("DESCRIPTION");
-//        TaskDAO dao = new TaskDAO(getActivity());
-//        dao.create(task);
-//
-//        adapter.setTasks(dao.getAll());
-//        adapter.notifyDataSetChanged();
-//
-//    }
 
 }
