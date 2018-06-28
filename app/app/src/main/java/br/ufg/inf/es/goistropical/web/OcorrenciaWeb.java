@@ -11,16 +11,16 @@ import java.util.LinkedList;
 import java.util.List;
 import java.util.Map;
 
-import br.ufg.inf.es.goistropical.model.Mural;
+import br.ufg.inf.es.goistropical.model.Ocorrencia;
 import okhttp3.Response;
 
-public class MuralWeb extends WebConnection {
+public class OcorrenciaWeb extends WebConnection {
 
-    private static final String SERVICE = "mural";
+    private static String SERVICE = "ocorrencia/";
     private String token;
 
-    public MuralWeb(String token) {
-        super(SERVICE);
+    public OcorrenciaWeb(String token) {
+        super(SERVICE + token);
         this.token = token;
     }
 
@@ -38,21 +38,25 @@ public class MuralWeb extends WebConnection {
     @Override
     void handleResponse(Response response) {
         String responseBody = null;
-        List<Mural> noticias = new LinkedList<>();
+        List<Ocorrencia> ocorrencias = new LinkedList<>();
         try {
             responseBody = response.body().string();
 
             JSONArray jsonArray = new JSONArray(responseBody);
             for(int i=0; i < jsonArray.length();i++){
                 JSONObject jsonObject = jsonArray.getJSONObject(i);
-                Mural noticia = new Mural();
-                noticia.setTitulo(jsonObject.getString("titulo"));
-                noticia.setDescricao(jsonObject.getString("descricao"));
-                noticia.setConteudo(jsonObject.getString("conteudo"));
-                noticia.setImagem(jsonObject.getString("link_imagem"));
-                noticias.add(noticia);
+                Ocorrencia ocorrencia = new Ocorrencia();
+
+                ocorrencia.setId(Integer.parseInt(jsonObject.getString("id")));
+                ocorrencia.setTitulo(jsonObject.getString("titulo"));
+                ocorrencia.setCategoria(jsonObject.getString("categoria"));
+                ocorrencia.setLocalizacao(jsonObject.getString("localizacao"));
+                ocorrencia.setStatus(jsonObject.getString("status"));
+                ocorrencia.setDescricao(jsonObject.getString("descricao"));
+
+                ocorrencias.add(ocorrencia);
             }
-            EventBus.getDefault().post(noticias);
+            EventBus.getDefault().post(ocorrencias);
         } catch (IOException e) {
             EventBus.getDefault().post(e);
         } catch (JSONException e) {

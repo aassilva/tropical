@@ -75,6 +75,7 @@ public class OcorrenciaListActivity extends AppCompatActivity {
             case R.id.navigation_mural:
                 Intent nova = new Intent(getApplicationContext(), MuralListActivity.class);
                 startActivity(nova);
+                finish();
                 return true;
             case R.id.navigation_ocorrencia:
                 return true;

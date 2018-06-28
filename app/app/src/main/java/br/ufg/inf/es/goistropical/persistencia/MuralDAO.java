@@ -83,7 +83,7 @@ public class MuralDAO extends SQLiteOpenHelper {
                 newsList.add(mural);
             } while (cursor.moveToNext());
         } else {
-            MuralWeb mural = new MuralWeb("123");
+            //MuralWeb mural = new MuralWeb("123");
         }
 
         return newsList;
