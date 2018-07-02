@@ -1,0 +1,7 @@
+<resources>
+    <string name="app_name">Goias Tropical</string>
+    <string name="title_perfil">Perfil</string>
+    <string name="title_mural">Mural</string>
+    <string name="title_ocorrencia">Ocorrência</string>
+    <string name="load_mural">Recuperando noticias</string>
+</resources>
