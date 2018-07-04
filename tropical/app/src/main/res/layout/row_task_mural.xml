@@ -2,7 +2,7 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:orientation="vertical" android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:padding="@dimen/activity_vertical_margin">
+    >
 
     <android.support.v7.widget.AppCompatImageView
         android:id="@+id/mural_task_img"
@@ -16,13 +16,15 @@
         android:layout_height="wrap_content"
         android:maxLines="2"
         android:textStyle="bold"
-        android:textSize="16sp"/>
+        android:textSize="16sp"
+        android:layout_below="@id/mural_task_img"/>
 
     <TextView
         android:id="@+id/mural_task_desc"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:maxLines="6"
-        android:textSize="14sp"/>
+        android:textSize="14sp"
+        android:layout_below="@id/mural_task_title"/>
 
 </LinearLayout>
