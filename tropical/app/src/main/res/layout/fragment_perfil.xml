@@ -1,0 +1,95 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".fragment_perfil">
+
+    <TextView
+        android:id="@+id/usuario"
+        android:layout_marginTop="15dp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Usuário:"
+        />
+
+    <TextView
+        android:id="@+id/label_usuario"
+        android:layout_marginTop="5dp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:textSize="14sp"
+        android:layout_below="@+id/usuario"
+        />
+
+    <TextView
+        android:id="@+id/nome"
+        android:layout_marginTop="5dp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/label_usuario"
+        android:text="Nome:"
+        />
+
+    <TextView
+        android:id="@+id/label_nome"
+        android:layout_marginTop="5dp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/nome"
+        />
+
+    <TextView
+        android:id="@+id/cpf"
+        android:layout_marginTop="5dp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/label_nome"
+        android:text="CPF:"
+        />
+
+    <TextView
+        android:id="@+id/label_cpf"
+        android:layout_marginTop="5dp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/cpf"
+        />
+
+    <TextView
+        android:id="@+id/telefone"
+        android:layout_marginTop="5dp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/label_cpf"
+        android:text="Telefone:"
+        />
+
+    <TextView
+        android:id="@+id/label_telefone"
+        android:layout_marginTop="5dp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/telefone"
+        />
+
+    <TextView
+        android:id="@+id/email"
+        android:layout_marginTop="5dp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/label_telefone"
+        android:text="E-mail:"
+        />
+
+    <TextView
+        android:id="@+id/label_email"
+        android:layout_marginTop="5dp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/email"
+        />
+
+
+</RelativeLayout>
