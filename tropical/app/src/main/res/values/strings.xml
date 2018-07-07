@@ -4,7 +4,15 @@
     <string name="nav_mural">Mural</string>
     <string name="nav_ocorr">Ocorrência</string>
     <string name="load_tasks">Carregando Noticias</string>
+<<<<<<< HEAD
+    <string name="lb_categoria">*Categoria:</string>
+    <string name="lb_descricao">*Descrição:</string>
+    <string name="lb_localizacao">*Localização:</string>
+    <string name="lb_botaoEnviar">Enviar</string>
+    <string name="tx_descricao">Por favor, descreva sua ocorrência aqui</string>
+=======
 
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
+>>>>>>> d4930a1f98fcaf8e552b8fbd5efb8f44f240baf4
 </resources>
