@@ -54,7 +54,7 @@ public class MainActivity extends AppCompatActivity {
         if(savedInstanceState==  null)  {
             getSupportFragmentManager()
                     .beginTransaction()
-                    .add(R.id.frame_layouts,  new OcorrenciaFragment())
+                    .add(R.id.frame_layouts,  new PerfilFragment())
                     //.add(R.id.frame_layouts,  new  MuralFragment())
                     .commit();
         }

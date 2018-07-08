@@ -8,4 +8,11 @@
     <string name="hello_blank_fragment">Hello blank fragment</string>
     <string name="load_tasks">Carregando as Notícias!</string>
     <string name="load_tasks_ocorrencia">Carregando seu histórico de ocorrências!</string>
+    <string name="button_register">Registrar-se</string>
+    <string name="hint_email">Email</string>
+    <string name="button_forgot_password">Esqueceu a senha?</string>
+    <string name="label_enter">Entrar</string>
+    <string name="hint_password">Senha</string>
+    <string name="error_connection">Você não tem conexão.</string>
+    <string name="label_wait">Aguarde</string>
 </resources>

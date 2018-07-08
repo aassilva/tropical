@@ -1,0 +1,174 @@
+package gt.dsdm.es.inf.br.ufg.gt_app.presenter.activity;
+
+import android.content.Intent;
+import android.net.Uri;
+import android.os.Bundle;
+import android.support.design.widget.Snackbar;
+import android.support.v7.app.AppCompatActivity;
+import android.view.View;
+import android.widget.Button;
+import android.widget.EditText;
+import android.widget.ImageView;
+
+import com.afollestad.materialdialogs.MaterialDialog;
+
+import org.greenrobot.eventbus.EventBus;
+import org.greenrobot.eventbus.Subscribe;
+import org.greenrobot.eventbus.ThreadMode;
+
+import gt.dsdm.es.inf.br.ufg.gt_app.MainActivity;
+import gt.dsdm.es.inf.br.ufg.gt_app.R;
+import gt.dsdm.es.inf.br.ufg.gt_app.model.Usuario;
+import gt.dsdm.es.inf.br.ufg.gt_app.persistencia.EasySharedPreferences;
+import gt.dsdm.es.inf.br.ufg.gt_app.web.WebLogin;
+import gt.dsdm.es.inf.br.ufg.gt_app.web.login.WebError;
+
+public class LoginActivity extends AppCompatActivity {
+
+    MaterialDialog dialog;
+
+    @Override
+    protected void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        setContentView(R.layout.activity_login);
+
+        ImageView buttonClose = findViewById(R.id.button_close);
+
+        buttonClose.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                finish();
+            }
+        });
+
+       // setupButtonRememberPassword();
+        setupButtonRegister();
+        setupLogin();
+    }
+
+    @Override
+    protected void onResume() {
+        super.onResume();
+        EventBus.getDefault().register(this);
+    }
+
+    @Override
+    protected void onPause() {
+        super.onPause();
+        EventBus.getDefault().unregister(this);
+    }
+
+//    private void setupButtonRememberPassword() {
+//        Button buttonRememberPassword =
+//                findViewById(R.id.button_forgot_password);
+//        buttonRememberPassword.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View v) {
+//                Intent intentPassword = new Intent(getApplicationContext(),
+//                        RememberPassword.class);
+//                startActivity(intentPassword);
+//            }
+//        });
+//    }
+
+    private void setupButtonRegister() {
+        Button buttonRegister =
+                findViewById(R.id.button_register);
+        buttonRegister.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent openUrlIntent = new Intent(Intent.ACTION_VIEW);
+                openUrlIntent.setData(
+                        Uri.parse("http://www.pudim.com.br"));
+                startActivity(openUrlIntent);
+            }
+        });
+    }
+
+    private void setupLogin() {
+        Button buttonLogin =
+                findViewById(R.id.button_login);
+        buttonLogin.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                tryLogin();
+            }
+        });
+    }
+
+    private void tryLogin() {
+        EditText editTextEmail = findViewById(R.id.input_email);
+        EditText editTextPassword = findViewById(R.id.input_password);
+
+        if(!"".equals(editTextEmail.getText().toString())){
+            showLoading();
+            sendCredentials(editTextEmail.getText().toString(),
+                    editTextPassword.getText().toString());
+        }else{
+            editTextEmail.setError("Preencha o campo email");
+        }
+
+    }
+
+    private void sendCredentials(String email, String pass) {
+        WebLogin taskLogin = new WebLogin(email, pass);
+        taskLogin.call();
+    }
+
+    private void showLoading(){
+        dialog = new MaterialDialog.Builder(this)
+                .content(R.string.label_wait)
+                .progress(true,0)
+                .cancelable(false)
+                .show();
+    }
+
+    @Subscribe(threadMode = ThreadMode.MAIN)
+    public void onMessageEvent(Usuario response) {
+        EasySharedPreferences easySharedPreferences = new EasySharedPreferences();
+        easySharedPreferences.setStringFromKey(this, "usuario", response.getUsuario());
+        easySharedPreferences.setStringFromKey(this, "nome", response.getNome());
+        easySharedPreferences.setStringFromKey(this, "cpf", response.getCpf());
+        easySharedPreferences.setStringFromKey(this, "telefone", response.getTelefone());
+        easySharedPreferences.setStringFromKey(this, "email", response.getEmail());
+        easySharedPreferences.setStringFromKey(this, "token", response.getToken());
+
+        Intent intent = new Intent(this, MainActivity.class);
+        startActivity(intent);
+    }
+
+//    @Subscribe
+//    public void onEvent(Usuario response){
+////        hideLoading();
+////        Intent openUrlIntent = new Intent(Intent.ACTION_VIEW);
+////        openUrlIntent.setData(
+////                Uri.parse("http://www.freescreencleaner.com/"));
+////        startActivity(openUrlIntent);
+//        EasySharedPreferences easySharedPreferences = new EasySharedPreferences();
+//        easySharedPreferences.setStringFromKey(this, "usuario", response.getUsuario());
+//        easySharedPreferences.setStringFromKey(this, "nome", response.getNome());
+//        easySharedPreferences.setStringFromKey(this, "cpf", response.getCpf());
+//        easySharedPreferences.setStringFromKey(this, "telefone", response.getTelefone());
+//        easySharedPreferences.setStringFromKey(this, "email", response.getEmail());
+//        easySharedPreferences.setStringFromKey(this, "token", response.getToken());
+//
+//        Intent intent = new Intent(this, MainActivity.class);
+//        startActivity(intent);
+//    }
+
+    @Subscribe
+    public void onEvent(WebError error){
+        hideLoading();
+        Snackbar.make(findViewById(R.id.container),
+                error.getMessage(),
+                Snackbar.LENGTH_LONG).show();
+    }
+
+    private void hideLoading(){
+        if(dialog != null && dialog.isShowing()){
+            dialog.hide();
+            dialog = null;
+        }
+    }
+
+}
