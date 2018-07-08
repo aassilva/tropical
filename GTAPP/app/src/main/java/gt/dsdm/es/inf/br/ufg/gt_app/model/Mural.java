@@ -1,3 +1,8 @@
+/*
+ * Copyright (c) 2018 Antonio Silva
+ * Copyright (c) 2018 Keslley Lima
+ * MIT License.
+ */
 package gt.dsdm.es.inf.br.ufg.gt_app.model;
 
 public class Mural {

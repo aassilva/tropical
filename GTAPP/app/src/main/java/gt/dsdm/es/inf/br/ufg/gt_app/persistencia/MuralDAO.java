@@ -1,3 +1,9 @@
+/*
+ * Copyright (c) 2018 Marcelo Quinta
+ * Copyright (c) 2018 Antonio Silva
+ * Copyright (c) 2018 Keslley Lima
+ * MIT License.
+ */
 package gt.dsdm.es.inf.br.ufg.gt_app.persistencia;
 
 import android.content.ContentValues;

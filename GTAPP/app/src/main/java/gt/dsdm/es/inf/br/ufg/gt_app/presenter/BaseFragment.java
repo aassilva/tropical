@@ -1,3 +1,7 @@
+/*
+ * Copyright (c) 2018 Marcelo Quinta
+ * MIT License.
+ */
 package gt.dsdm.es.inf.br.ufg.gt_app.presenter;
 
 import android.support.design.widget.Snackbar;
