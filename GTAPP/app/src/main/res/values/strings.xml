@@ -1,0 +1,10 @@
+<resources>
+    <string name="app_name">GT-APP</string>
+    <string name="title_home">Mural</string>
+    <string name="title_dashboard">Ocorrências</string>
+    <string name="title_notifications">Perfil</string>
+
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="load_tasks">Carregando as Notícias!</string>
+</resources>
