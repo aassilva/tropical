@@ -8,6 +8,7 @@ import android.view.MenuItem;
 import android.widget.TextView;
 
 import gt.dsdm.es.inf.br.ufg.gt_app.presenter.list.MuralFragment;
+import gt.dsdm.es.inf.br.ufg.gt_app.presenter.list.OcorrenciaFragment;
 
 public class MainActivity extends AppCompatActivity {
 
