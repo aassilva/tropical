@@ -6,14 +6,17 @@
  */
 package gt.dsdm.es.inf.br.ufg.gt_app.presenter.list;
 
-
+import android.content.Intent;
 import android.os.Bundle;
+import android.support.design.widget.FloatingActionButton;
 import android.support.v4.app.Fragment;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Toast;
 
 import com.afollestad.materialdialogs.MaterialDialog;
 
@@ -30,16 +33,18 @@ import gt.dsdm.es.inf.br.ufg.gt_app.R;
 import gt.dsdm.es.inf.br.ufg.gt_app.model.Ocorrencia;
 import gt.dsdm.es.inf.br.ufg.gt_app.persistencia.OcorrenciaDAO;
 import gt.dsdm.es.inf.br.ufg.gt_app.presenter.BaseFragment;
+import gt.dsdm.es.inf.br.ufg.gt_app.presenter.activity.Activity_criar_ocorrencia;
 import gt.dsdm.es.inf.br.ufg.gt_app.web.WebOcorrencia;
 
 
 /**
  * A simple {@link Fragment} subclass.
  */
-public class OcorrenciaFragment extends BaseFragment {
+public class OcorrenciaFragment extends BaseFragment implements View.OnClickListener{
 
     private List<Ocorrencia> ocorrenciaList;
     private AdapterOcorrencia adapter;
+    private FloatingActionButton fabAddOc;
 
     public OcorrenciaFragment() {
         // Required empty public constructor
@@ -51,6 +56,9 @@ public class OcorrenciaFragment extends BaseFragment {
         // Inflate the layout for this fragment
         View view = inflater.inflate(R.layout.fragment_ocorrencia, container, false);
         ocorrenciaList = new LinkedList<>();
+
+        fabAddOc = view.findViewById(R.id.fab);
+        fabAddOc.setOnClickListener(this);
 
         return view;
     }
@@ -85,7 +93,6 @@ public class OcorrenciaFragment extends BaseFragment {
         adapter = new AdapterOcorrencia(ocorrenciaList,getActivity());
         recyclerView.setAdapter(adapter);
     }
-
 
     public void getOcorrencias(){
         List<Ocorrencia> ocorrenciaList = new ArrayList<>();
@@ -135,4 +142,10 @@ public class OcorrenciaFragment extends BaseFragment {
         adapter.notifyDataSetChanged();
     }
 
+    @Override
+    public void onClick(View view) {
+        if(view.getId() == fabAddOc.getId()){
+            getActivity().startActivity(new Intent(getActivity(), Activity_criar_ocorrencia.class));
+        }
+    }
 }

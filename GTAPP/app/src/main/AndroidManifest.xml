@@ -25,6 +25,7 @@
         </activity>
         <activity android:name=".presenter.activity.RegistroActivity" ></activity>
         <activity android:name=".RecuperarSenhaActivity"></activity>
+        <activity android:name=".presenter.activity.Activity_criar_ocorrencia"/>
     </application>
 
 </manifest>

@@ -1,4 +1,4 @@
-package es.inf.ufg.br;
+package gt.dsdm.es.inf.br.ufg.gt_app.presenter.activity;
 
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -10,6 +10,8 @@ import android.widget.Toast;
 
 import java.util.ArrayList;
 import java.util.List;
+
+import gt.dsdm.es.inf.br.ufg.gt_app.R;
 
 public class Activity_criar_ocorrencia extends AppCompatActivity {
 

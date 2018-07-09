@@ -20,4 +20,8 @@
     <string name="hint_telefone">Telefone</string>
     <string name="hint_usuario">Usuário</string>
     <string name="button_cadastro">Concluir cadastro</string>
+    <string name="lb_categoria">Categorias</string>
+    <string name="lb_descricao">Descrição</string>
+    <string name="str_enviar">Enviar</string>
+    <string name="lb_localizacao">Localização</string>
 </resources>
