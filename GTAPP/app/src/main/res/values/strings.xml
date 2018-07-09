@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">GT-APP</string>
+    <string name="app_name">Goiás Tropical</string>
     <string name="title_home">Mural</string>
     <string name="title_dashboard">Ocorrências</string>
     <string name="title_notifications">Perfil</string>
@@ -20,4 +20,6 @@
     <string name="hint_telefone">Telefone</string>
     <string name="hint_usuario">Usuário</string>
     <string name="button_cadastro">Concluir cadastro</string>
+    <string name="entra">FAZER LOGIN</string>
+    <string name="avisoLogin">Você ainda não está logado no sistema.</string>
 </resources>

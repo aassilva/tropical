@@ -1,5 +1,6 @@
 package gt.dsdm.es.inf.br.ufg.gt_app;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.design.widget.BottomNavigationView;
@@ -12,6 +13,7 @@ import android.widget.TextView;
 
 import org.greenrobot.eventbus.EventBus;
 
+import gt.dsdm.es.inf.br.ufg.gt_app.presenter.activity.LoginActivity;
 import gt.dsdm.es.inf.br.ufg.gt_app.presenter.list.MuralFragment;
 import gt.dsdm.es.inf.br.ufg.gt_app.presenter.list.OcorrenciaFragment;
 
