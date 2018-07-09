@@ -1,7 +1,6 @@
 package gt.dsdm.es.inf.br.ufg.gt_app.presenter.activity;
 
 import android.content.Intent;
-import android.net.Uri;
 import android.os.Bundle;
 import android.support.design.widget.Snackbar;
 import android.support.v7.app.AppCompatActivity;
@@ -18,10 +17,12 @@ import org.greenrobot.eventbus.ThreadMode;
 
 import gt.dsdm.es.inf.br.ufg.gt_app.MainActivity;
 import gt.dsdm.es.inf.br.ufg.gt_app.R;
+import gt.dsdm.es.inf.br.ufg.gt_app.RecuperarSenhaActivity;
 import gt.dsdm.es.inf.br.ufg.gt_app.model.Usuario;
 import gt.dsdm.es.inf.br.ufg.gt_app.persistencia.EasySharedPreferences;
 import gt.dsdm.es.inf.br.ufg.gt_app.web.WebLogin;
 import gt.dsdm.es.inf.br.ufg.gt_app.web.login.WebError;
+import gt.dsdm.es.inf.br.ufg.gt_app.web.login.WebTaskLogin;
 
 public class LoginActivity extends AppCompatActivity {
 
@@ -41,7 +42,7 @@ public class LoginActivity extends AppCompatActivity {
             }
         });
 
-       // setupButtonRememberPassword();
+        setupButtonRememberPassword();
         setupButtonRegister();
         setupLogin();
     }
@@ -58,18 +59,18 @@ public class LoginActivity extends AppCompatActivity {
         EventBus.getDefault().unregister(this);
     }
 
-//    private void setupButtonRememberPassword() {
-//        Button buttonRememberPassword =
-//                findViewById(R.id.button_forgot_password);
-//        buttonRememberPassword.setOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View v) {
-//                Intent intentPassword = new Intent(getApplicationContext(),
-//                        RememberPassword.class);
-//                startActivity(intentPassword);
-//            }
-//        });
-//    }
+    private void setupButtonRememberPassword() {
+        Button buttonRememberPassword =
+                findViewById(R.id.button_forgot_password);
+        buttonRememberPassword.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intentPassword = new Intent(getApplicationContext(),
+                        RecuperarSenhaActivity.class);
+                startActivity(intentPassword);
+            }
+        });
+    }
 
     private void setupButtonRegister() {
         Button buttonRegister =
@@ -77,10 +78,13 @@ public class LoginActivity extends AppCompatActivity {
         buttonRegister.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent openUrlIntent = new Intent(Intent.ACTION_VIEW);
-                openUrlIntent.setData(
-                        Uri.parse("http://www.pudim.com.br"));
-                startActivity(openUrlIntent);
+                Intent intent = new Intent(getApplicationContext(),
+                        RegistroActivity.class);
+                startActivity(intent);
+//                Intent openUrlIntent = new Intent(Intent.ACTION_VIEW);
+//                openUrlIntent.setData(
+//                        Uri.parse("http://www.pudim.com.br"));
+//                startActivity(openUrlIntent);
             }
         });
     }
@@ -111,8 +115,8 @@ public class LoginActivity extends AppCompatActivity {
     }
 
     private void sendCredentials(String email, String pass) {
-        WebLogin taskLogin = new WebLogin(email, pass);
-        taskLogin.call();
+        WebTaskLogin taskLogin = new WebTaskLogin(this, email, pass);
+        taskLogin.execute();
     }
 
     private void showLoading(){

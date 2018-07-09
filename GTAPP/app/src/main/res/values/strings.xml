@@ -15,4 +15,9 @@
     <string name="hint_password">Senha</string>
     <string name="error_connection">Você não tem conexão.</string>
     <string name="label_wait">Aguarde</string>
+    <string name="hint_name">Nome</string>
+    <string name="hint_cpf">CPF</string>
+    <string name="hint_telefone">Telefone</string>
+    <string name="hint_usuario">Usuário</string>
+    <string name="button_cadastro">Concluir cadastro</string>
 </resources>

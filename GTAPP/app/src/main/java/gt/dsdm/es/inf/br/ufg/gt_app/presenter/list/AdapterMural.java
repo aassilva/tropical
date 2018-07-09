@@ -45,6 +45,7 @@ public class AdapterMural extends RecyclerView.Adapter<AdapterMural.MuralViewHol
 
         holder.nameView.setText(mural.getTitulo());
         holder.descriptionView.setText(mural.getDescricao());
+
         holder.imageView.setImageURI(Uri.parse(mural.getImagem()));
 
         holder.itemView.setOnClickListener(new View.OnClickListener() {
