@@ -70,6 +70,12 @@ public class MuralFragment extends BaseFragment {
         EventBus.getDefault().unregister(this);
     }
 
+    @Override
+    public void onDestroy() {
+
+        super.onDestroy();
+    }
+
     public void initRecycler(){
         RecyclerView recyclerView = (RecyclerView) getView().findViewById(R.id.mural_list);
         recyclerView.setLayoutManager(new LinearLayoutManager(getActivity()));

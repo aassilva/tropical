@@ -73,6 +73,12 @@ public class OcorrenciaFragment extends BaseFragment {
         EventBus.getDefault().unregister(this);
     }
 
+    @Override
+    public void onDestroy() {
+
+        super.onDestroy();
+    }
+
     public void initRecycler(){
         RecyclerView recyclerView = (RecyclerView) getView().findViewById(R.id.ocorrencia_list);
         recyclerView.setLayoutManager(new LinearLayoutManager(getActivity()));
