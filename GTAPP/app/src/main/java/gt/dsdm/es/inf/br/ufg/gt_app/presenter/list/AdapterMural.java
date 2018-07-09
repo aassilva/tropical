@@ -10,10 +10,13 @@ import android.content.Context;
 import android.net.Uri;
 import android.support.v7.widget.AppCompatImageView;
 import android.support.v7.widget.RecyclerView;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
+
+import com.squareup.picasso.Picasso;
 
 import org.greenrobot.eventbus.EventBus;
 
@@ -46,7 +49,7 @@ public class AdapterMural extends RecyclerView.Adapter<AdapterMural.MuralViewHol
         holder.nameView.setText(mural.getTitulo());
         holder.descriptionView.setText(mural.getDescricao());
 
-        holder.imageView.setImageURI(Uri.parse(mural.getImagem()));
+        Picasso.get().load(mural.getImagem()).into(holder.imageView);
 
         holder.itemView.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -77,9 +80,9 @@ public class AdapterMural extends RecyclerView.Adapter<AdapterMural.MuralViewHol
 
         MuralViewHolder(View itemView) {
             super(itemView);
-            nameView = (TextView)itemView.findViewById(R.id.label_task_title);
-            descriptionView = (TextView)itemView.findViewById(R.id.label_task_desc);
-            imageView = (AppCompatImageView)itemView.findViewById(R.id.label_taskimg_mural);
+            nameView = itemView.findViewById(R.id.label_task_title);
+            descriptionView = itemView.findViewById(R.id.label_task_desc);
+            imageView = itemView.findViewById(R.id.label_taskimg_mural);
         }
     }
 }

@@ -6,6 +6,8 @@
  */
 package gt.dsdm.es.inf.br.ufg.gt_app.web;
 
+import android.util.Log;
+
 import org.greenrobot.eventbus.EventBus;
 import org.json.JSONArray;
 import org.json.JSONException;

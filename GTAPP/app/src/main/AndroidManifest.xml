@@ -17,14 +17,21 @@
             android:label="@string/app_name">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
-
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+<<<<<<< HEAD
         <!-- <activity android:name=".presenter.activity.LoginActivity"></activity> -->
         <activity android:name=".presenter.activity.RegistroActivity" />
         <activity android:name=".RecuperarSenhaActivity" />
         <activity android:name=".NotLoginActivity"></activity>
+=======
+        <activity android:name=".presenter.activity.LoginActivity">
+
+        </activity>
+        <activity android:name=".presenter.activity.RegistroActivity" ></activity>
+        <activity android:name=".RecuperarSenhaActivity"></activity>
+>>>>>>> c0b4ab65c4c6acc6b51568d60ddf51bd615289e2
     </application>
 
 </manifest>
