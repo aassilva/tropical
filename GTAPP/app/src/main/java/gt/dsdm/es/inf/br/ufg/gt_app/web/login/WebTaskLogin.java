@@ -9,13 +9,10 @@ package gt.dsdm.es.inf.br.ufg.gt_app.web.login;
 import android.content.Context;
 
 import org.greenrobot.eventbus.EventBus;
-import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
-import java.util.ArrayList;
 import java.util.HashMap;
-import java.util.List;
 import java.util.Map;
 
 import gt.dsdm.es.inf.br.ufg.gt_app.model.Usuario;

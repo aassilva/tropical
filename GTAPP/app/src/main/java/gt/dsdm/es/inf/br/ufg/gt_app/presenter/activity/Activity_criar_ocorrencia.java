@@ -6,10 +6,9 @@ import android.content.pm.PackageManager;
 import android.location.Criteria;
 import android.location.Location;
 import android.location.LocationManager;
+import android.os.Bundle;
 import android.support.v4.app.ActivityCompat;
 import android.support.v7.app.AppCompatActivity;
-import android.os.Bundle;
-import android.util.Log;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
@@ -21,8 +20,9 @@ import com.google.android.gms.maps.CameraUpdateFactory;
 import com.google.android.gms.maps.GoogleMap;
 import com.google.android.gms.maps.OnMapReadyCallback;
 import com.google.android.gms.maps.SupportMapFragment;
-import com.google.android.gms.maps.model.CameraPosition;
+import com.google.android.gms.maps.model.BitmapDescriptorFactory;
 import com.google.android.gms.maps.model.LatLng;
+import com.google.android.gms.maps.model.MarkerOptions;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -32,6 +32,8 @@ import gt.dsdm.es.inf.br.ufg.gt_app.R;
 public class Activity_criar_ocorrencia extends AppCompatActivity implements OnMapReadyCallback {
 
     Spinner simpleSpinner;
+    private MarkerOptions marker;
+    
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -39,6 +41,7 @@ public class Activity_criar_ocorrencia extends AppCompatActivity implements OnMa
         setContentView(R.layout.activity_criar_ocorrencia);
 
         simpleSpinner = findViewById(R.id.simple_spinner);
+        MarkerOptions marker;
 
         SupportMapFragment mapFragment =
                 (SupportMapFragment) getSupportFragmentManager().findFragmentById(R.id.map);
@@ -68,7 +71,7 @@ public class Activity_criar_ocorrencia extends AppCompatActivity implements OnMa
     }
 
     @Override
-    public void onMapReady(GoogleMap googleMap) {
+    public void onMapReady(final GoogleMap googleMap) {
 
         if (ActivityCompat.checkSelfPermission(this, Manifest.permission.ACCESS_FINE_LOCATION) != PackageManager.PERMISSION_GRANTED && ActivityCompat.checkSelfPermission(this, Manifest.permission.ACCESS_COARSE_LOCATION) != PackageManager.PERMISSION_GRANTED) {
             return;
@@ -79,15 +82,38 @@ public class Activity_criar_ocorrencia extends AppCompatActivity implements OnMa
         Criteria criteria = new Criteria();
 
         Location location = locationManager.getLastKnownLocation(locationManager.getBestProvider(criteria, false));
-        if (location != null)
-        {
+        if (location != null) {
 
-            googleMap.moveCamera(CameraUpdateFactory.newLatLngZoom(new LatLng(location.getLatitude(), location.getLongitude()), 15));
+            CameraUpdate center = CameraUpdateFactory.newLatLng(new LatLng(location.getLatitude(), location.getLongitude()));
+            googleMap.moveCamera(center);
 
-            Log.i("aaa", "bbb");
         }
 
         googleMap.setMyLocationEnabled(true);
+
+
+
+        googleMap.setOnMapClickListener(new GoogleMap.OnMapClickListener() {
+            @Override
+            public void onMapClick(LatLng latLng) {
+
+                googleMap.clear();
+
+                marker = new MarkerOptions()
+                        .position(new LatLng(latLng.latitude, latLng.longitude))
+                        .anchor(0.5f, 0.1f)
+                        .title("")
+                        .snippet("")
+                        .icon(BitmapDescriptorFactory.defaultMarker(BitmapDescriptorFactory.HUE_RED));
+
+                googleMap.addMarker(marker);
+            }
+        });
+    }
+
+    public void saveOccurrence(View view) {
+
+
 
     }
 }

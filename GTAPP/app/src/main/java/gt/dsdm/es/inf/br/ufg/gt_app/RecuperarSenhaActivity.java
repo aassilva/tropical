@@ -1,7 +1,7 @@
 package gt.dsdm.es.inf.br.ufg.gt_app;
 
-import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.support.v7.app.AppCompatActivity;
 
 public class RecuperarSenhaActivity extends AppCompatActivity {
 

@@ -1,18 +1,14 @@
 package gt.dsdm.es.inf.br.ufg.gt_app.web;
 
-import gt.dsdm.es.inf.br.ufg.gt_app.model.Usuario;
-import gt.dsdm.es.inf.br.ufg.gt_app.web.WebConnection;
 import org.greenrobot.eventbus.EventBus;
-import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
 import java.io.IOException;
-import java.util.ArrayList;
 import java.util.HashMap;
-import java.util.LinkedList;
-import java.util.List;
 import java.util.Map;
+
+import gt.dsdm.es.inf.br.ufg.gt_app.model.Usuario;
 import okhttp3.Response;
 
 public class WebLogin extends WebConnection {

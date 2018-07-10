@@ -12,11 +12,8 @@ import org.json.JSONException;
 import org.json.JSONObject;
 
 import java.io.IOException;
-import java.util.ArrayList;
-import java.util.HashMap;
 import java.util.LinkedList;
 import java.util.List;
-import java.util.Map;
 
 import gt.dsdm.es.inf.br.ufg.gt_app.model.Ocorrencia;
 import okhttp3.Response;

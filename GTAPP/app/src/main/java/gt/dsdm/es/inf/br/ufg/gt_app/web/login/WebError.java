@@ -1,7 +1,5 @@
 package gt.dsdm.es.inf.br.ufg.gt_app.web.login;
 
-import java.lang.Error;
-
 public class WebError extends Error {
 
     private String request;
