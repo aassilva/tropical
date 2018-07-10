@@ -4,6 +4,10 @@
 
     <uses-permission android:name="android.permission.INTERNET" />
     <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
+    <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION"/>
+    <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION"/>
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE"/>
+    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE"/>
 
     <application
         android:allowBackup="true"
@@ -26,6 +30,10 @@
         <activity android:name=".presenter.activity.RegistroActivity" ></activity>
         <activity android:name=".RecuperarSenhaActivity"></activity>
         <activity android:name=".presenter.activity.Activity_criar_ocorrencia"/>
+
+        <meta-data
+            android:name="com.google.android.geo.API_KEY"
+            android:value="AIzaSyCFZh1p92O0kfTeF0N1p7kvYLHN57ND5uY" />
     </application>
 
 </manifest>
