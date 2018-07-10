@@ -12,6 +12,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
+import android.widget.EditText;
 import android.widget.Spinner;
 import android.widget.Toast;
 
@@ -28,39 +29,47 @@ import java.util.ArrayList;
 import java.util.List;
 
 import gt.dsdm.es.inf.br.ufg.gt_app.R;
+import gt.dsdm.es.inf.br.ufg.gt_app.model.Ocorrencia;
+import gt.dsdm.es.inf.br.ufg.gt_app.request.ApiarySaveOcurrenceRequest;
 
 public class Activity_criar_ocorrencia extends AppCompatActivity implements OnMapReadyCallback {
 
-    Spinner simpleSpinner;
+    Spinner spinnerCategorias;
     private MarkerOptions marker;
-    
+    private EditText edtTitulo, edtDescricao;
+    double latitude = 0, longitude = 0;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
+
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_criar_ocorrencia);
 
-        simpleSpinner = findViewById(R.id.simple_spinner);
-        MarkerOptions marker;
+        edtTitulo = findViewById(R.id.edt_titulo);
+        edtDescricao = findViewById(R.id.edt_descricao);
+
+        spinnerCategorias = findViewById(R.id.simple_spinner);
+
+        edtDescricao = findViewById(R.id.edt_descricao);
 
         SupportMapFragment mapFragment =
                 (SupportMapFragment) getSupportFragmentManager().findFragmentById(R.id.map);
         mapFragment.getMapAsync(this);
 
         final List<String> listaCategoria = new ArrayList<String>();
+        listaCategoria.add("Selecione");
         listaCategoria.add("Solicitação de visita");
         listaCategoria.add("Solicitação de intervenção");
         listaCategoria.add("Denuncia em espaço público");
         listaCategoria.add("Denuncia em espaço privado");
 
         ArrayAdapter<String> adapterCategoria = new ArrayAdapter<>(Activity_criar_ocorrencia.this, R.layout.support_simple_spinner_dropdown_item, listaCategoria);
-        simpleSpinner.setAdapter(adapterCategoria);
+        spinnerCategorias.setAdapter(adapterCategoria);
 
-        simpleSpinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+        spinnerCategorias.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
             @Override
             public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
                 Toast.makeText(Activity_criar_ocorrencia.this, listaCategoria.get(position), Toast.LENGTH_SHORT);
-
             }
 
             @Override
@@ -99,6 +108,9 @@ public class Activity_criar_ocorrencia extends AppCompatActivity implements OnMa
 
                 googleMap.clear();
 
+                latitude = latLng.latitude;
+                longitude = latLng.longitude;
+
                 marker = new MarkerOptions()
                         .position(new LatLng(latLng.latitude, latLng.longitude))
                         .anchor(0.5f, 0.1f)
@@ -113,7 +125,37 @@ public class Activity_criar_ocorrencia extends AppCompatActivity implements OnMa
 
     public void saveOccurrence(View view) {
 
+        if(validaCampos()){
+            //Digitou certo, vou salvar a ocorrência
 
+            ApiarySaveOcurrenceRequest request = new ApiarySaveOcurrenceRequest(
+                    new Ocorrencia(edtTitulo.getText().toString(),
+                            edtDescricao.getText().toString(),
+                            "Aberto",
+                            latitude+"|"+longitude,
+                            spinnerCategorias.getSelectedItem().toString()), this);
+            request.execute();
+        }
+    }
 
+    private boolean validaCampos(){
+
+        if (spinnerCategorias.getSelectedItem() == "Selecione") {
+            Toast.makeText(this, "Selecione uma uma categoria!", Toast.LENGTH_SHORT).show();
+            return false;
+        }
+        if (edtTitulo.getText().toString().isEmpty()) {
+            Toast.makeText(this, "Digite um Título!", Toast.LENGTH_SHORT).show();
+            return false;
+        }
+        if (edtDescricao.getText().toString().isEmpty()) {
+            Toast.makeText(this, "Digite uma descrição!", Toast.LENGTH_SHORT).show();
+            return false;
+        }
+        if(latitude == 0 && longitude == 0){
+            Toast.makeText(this, "Selecione uma localização!", Toast.LENGTH_SHORT).show();
+            return false;
+        }
+        return true;
     }
 }

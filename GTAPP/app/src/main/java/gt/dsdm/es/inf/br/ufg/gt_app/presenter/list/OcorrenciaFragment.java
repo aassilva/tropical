@@ -93,13 +93,12 @@ public class OcorrenciaFragment extends BaseFragment implements View.OnClickList
         List<Ocorrencia> ocorrenciaList = new ArrayList<>();
 
         for (int i = 1; i <= 10; i++) {
-            Ocorrencia ocorrencia = new Ocorrencia();
-            ocorrencia.setId(i);
-            ocorrencia.setTitulo("titulo" + i);
-            ocorrencia.setDescricao("descricao" + i);
-            ocorrencia.setStatus("status" + i);
-            ocorrencia.setLocalizacao("localização" + i);
-            ocorrencia.setCategoria("categoria" + i);
+            Ocorrencia ocorrencia = new Ocorrencia("titulo" + i,
+                    "descricao" + i,
+                    "status" + i,
+                    "localização" + i,
+                    "categoria" + i
+                    );
             ocorrenciaList.add(ocorrencia);
         }
 

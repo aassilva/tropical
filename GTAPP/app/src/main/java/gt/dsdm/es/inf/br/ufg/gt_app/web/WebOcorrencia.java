@@ -45,13 +45,12 @@ public class WebOcorrencia extends WebConnection {
             JSONArray jsonArray = new JSONArray(responseBody);
             for(int i=0; i < jsonArray.length();i++){
                 JSONObject jsonObject = jsonArray.getJSONObject(i);
-                Ocorrencia ocorrencia = new Ocorrencia();
-                ocorrencia.setId(Integer.parseInt(jsonObject.getString("id")));
-                ocorrencia.setTitulo(jsonObject.getString("titulo"));
-                ocorrencia.setDescricao(jsonObject.getString("descricao"));
-                ocorrencia.setStatus(jsonObject.getString("status"));
-                ocorrencia.setLocalizacao(jsonObject.getString("localizacao"));
-                ocorrencia.setCategoria(jsonObject.getString("categoria"));
+                Ocorrencia ocorrencia = new Ocorrencia(jsonObject.getString("titulo"),
+                        jsonObject.getString("descricao"),
+                        jsonObject.getString("status"),
+                        jsonObject.getString("localizacao"),
+                        jsonObject.getString("categoria")
+                        );
                 ocorrencias.add(ocorrencia);
             }
             EventBus.getDefault().post(ocorrencias);

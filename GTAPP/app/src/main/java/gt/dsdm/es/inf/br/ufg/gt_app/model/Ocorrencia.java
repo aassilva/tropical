@@ -14,6 +14,15 @@ public class Ocorrencia {
     private String localizacao;
     private String categoria;
 
+    public Ocorrencia(String titulo, String descricao, String status, String localizacao, String categoria) {
+        this.id = 222;//TODO gerar número randômico aqui
+        this.titulo = titulo;
+        this.descricao = descricao;
+        this.status = status;
+        this.localizacao = localizacao;
+        this.categoria = categoria;
+    }
+
     public String getTitulo() {
         return titulo;
     }
@@ -62,4 +71,14 @@ public class Ocorrencia {
         this.categoria = categoria;
     }
 
+    public String toJson() {
+        return "{" +
+                "\"id\":" + id +
+                ", \"titulo\":\"" + titulo + '\"' +
+                ", \"descricao\":\"" + descricao + '\"' +
+                ", \"status\":\"" + status + '\"' +
+                ", \"localizacao\":\"" + localizacao + '\"' +
+                ", \"categoria\":\"" + categoria + '\"' +
+                '}';
+    }
 }

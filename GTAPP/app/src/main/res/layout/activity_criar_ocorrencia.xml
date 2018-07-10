@@ -27,8 +27,25 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:drawSelectorOnTop="true"
-            tools:layout_editor_absoluteY="44dp"
             android:layout_marginTop="5dp"/>
+
+        <TextView
+            android:id="@+id/lbl_titulo"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/lb_titulo"
+            android:layout_marginTop="10dp"
+            android:textSize="24sp"
+            android:textStyle="bold" />
+
+        <EditText
+            android:id="@+id/edt_titulo"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:ems="10"
+            android:inputType="textPersonName"
+            android:textSize="14sp"
+            tools:layout_editor_absoluteY="119dp" />
 
         <TextView
             android:id="@+id/textView3"
@@ -40,7 +57,7 @@
             android:textStyle="bold" />
 
         <EditText
-            android:id="@+id/editText3"
+            android:id="@+id/edt_descricao"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:ems="10"

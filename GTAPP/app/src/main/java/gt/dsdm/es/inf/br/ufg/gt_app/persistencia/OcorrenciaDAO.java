@@ -81,13 +81,12 @@ public class OcorrenciaDAO extends SQLiteOpenHelper {
 
         if (cursor != null && cursor.moveToFirst()) {
             do {
-                Ocorrencia ocorrencia = new Ocorrencia();
-                ocorrencia.setId(Integer.parseInt(cursor.getString(0)));
-                ocorrencia.setTitulo(cursor.getString(1));
-                ocorrencia.setDescricao(cursor.getString(2));
-                ocorrencia.setStatus(cursor.getString(3));
-                ocorrencia.setLocalizacao(cursor.getString(4));
-                ocorrencia.setCategoria(cursor.getString(5));
+                Ocorrencia ocorrencia = new Ocorrencia(cursor.getString(1),
+                        cursor.getString(2),
+                        cursor.getString(3),
+                        cursor.getString(4),
+                        cursor.getString(5)
+                        );
                 newsList.add(ocorrencia);
             } while (cursor.moveToNext());
         }
