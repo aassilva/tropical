@@ -37,7 +37,7 @@
 <activity android:name=".presenter.activity.LoginActivity"></activity>
         <activity android:name=".presenter.activity.RegistroActivity" />
         <activity android:name=".RecuperarSenhaActivity" />
-        <activity android:name=".NotLoginActivity"></activity>
+        <activity android:name=".presenter.activity.NotLoginActivity"></activity>
     </application>
 
 </manifest>

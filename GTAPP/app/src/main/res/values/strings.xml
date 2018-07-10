@@ -27,4 +27,9 @@
     <string name="lb_localizacao">Localização</string>
     <string name="entra">FAZER LOGIN</string>
     <string name="avisoLogin">Você ainda não está logado no sistema.</string>
+    <string name="nome">Nome:</string>
+    <string name="cpf">CPF:</string>
+    <string name="usuario">Usuário:</string>
+    <string name="telefone">Telefone:</string>
+    <string name="email">E-mail:</string>
 </resources>

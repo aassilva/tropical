@@ -5,10 +5,109 @@
     android:layout_height="match_parent"
     tools:context=".PerfilFragment">
 
-    <!-- TODO: Update blank fragment layout -->
     <TextView
+        android:id="@+id/nome"
+        android:text="@string/nome"
+        android:layout_marginTop="15dp"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:text="Fragmento Perfil" />
+        android:layout_height="wrap_content"
+        android:maxLines="2"
+        android:textStyle="bold"
+        android:textSize="18sp"
+        />
+    <TextView
+        android:id="@+id/label_task_nome"
+        android:layout_below="@+id/nome"
+        android:layout_marginTop="5dp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:maxLines="2"
+        android:textSize="18sp"
+        />
+
+
+    <TextView
+        android:id="@+id/cpf"
+        android:text="@string/cpf"
+        android:layout_marginTop="15dp"
+        android:layout_below="@+id/label_task_nome"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:maxLines="2"
+        android:textStyle="bold"
+        android:textSize="18sp"
+        />
+    <TextView
+        android:id="@+id/label_task_cpf"
+        android:layout_below="@+id/cpf"
+        android:layout_marginTop="5dp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:maxLines="2"
+        android:textSize="18sp"
+        />
+
+    <TextView
+        android:id="@+id/usuario"
+        android:text="@string/usuario"
+        android:layout_marginTop="15dp"
+        android:layout_below="@+id/label_task_cpf"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:maxLines="2"
+        android:textStyle="bold"
+        android:textSize="18sp"
+        />
+    <TextView
+        android:id="@+id/label_task_usuario"
+        android:layout_below="@+id/usuario"
+        android:layout_marginTop="5dp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:maxLines="2"
+        android:textSize="18sp"
+        />
+
+    <TextView
+        android:id="@+id/telefone"
+        android:text="@string/telefone"
+        android:layout_marginTop="15dp"
+        android:layout_below="@+id/label_task_usuario"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:maxLines="2"
+        android:textStyle="bold"
+        android:textSize="18sp"
+        />
+    <TextView
+        android:id="@+id/label_task_telefone"
+        android:layout_below="@+id/telefone"
+        android:layout_marginTop="5dp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:maxLines="2"
+        android:textSize="18sp"
+        />
+
+    <TextView
+        android:id="@+id/email"
+        android:text="@string/email"
+        android:layout_marginTop="15dp"
+        android:layout_below="@+id/label_task_telefone"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:maxLines="2"
+        android:textStyle="bold"
+        android:textSize="18sp"
+        />
+    <TextView
+        android:id="@+id/label_task_email"
+        android:layout_below="@+id/email"
+        android:layout_marginTop="5dp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:maxLines="2"
+        android:textSize="18sp"
+        />
 
 </RelativeLayout>

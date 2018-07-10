@@ -1,4 +1,4 @@
-package gt.dsdm.es.inf.br.ufg.gt_app;
+package gt.dsdm.es.inf.br.ufg.gt_app.presenter.activity;
 
 import android.content.Intent;
 import android.os.Bundle;
@@ -6,6 +6,8 @@ import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.widget.ImageView;
 
+import gt.dsdm.es.inf.br.ufg.gt_app.MainActivity;
+import gt.dsdm.es.inf.br.ufg.gt_app.R;
 import gt.dsdm.es.inf.br.ufg.gt_app.presenter.activity.LoginActivity;
 
 public class NotLoginActivity extends AppCompatActivity {

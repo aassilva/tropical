@@ -26,9 +26,11 @@ import java.util.List;
 
 import gt.dsdm.es.inf.br.ufg.gt_app.R;
 import gt.dsdm.es.inf.br.ufg.gt_app.model.Ocorrencia;
+import gt.dsdm.es.inf.br.ufg.gt_app.persistencia.EasySharedPreferences;
 import gt.dsdm.es.inf.br.ufg.gt_app.persistencia.OcorrenciaDAO;
 import gt.dsdm.es.inf.br.ufg.gt_app.presenter.BaseFragment;
 import gt.dsdm.es.inf.br.ufg.gt_app.presenter.activity.Activity_criar_ocorrencia;
+import gt.dsdm.es.inf.br.ufg.gt_app.presenter.activity.NotLoginActivity;
 import gt.dsdm.es.inf.br.ufg.gt_app.web.WebOcorrencia;
 
 
@@ -40,6 +42,7 @@ public class OcorrenciaFragment extends BaseFragment implements View.OnClickList
     private List<Ocorrencia> ocorrenciaList;
     private AdapterOcorrencia adapter;
     private FloatingActionButton fabAddOc;
+    private EasySharedPreferences easySharedPreferences = new EasySharedPreferences();
 
     public OcorrenciaFragment() {
         // Required empty public constructor
@@ -61,13 +64,18 @@ public class OcorrenciaFragment extends BaseFragment implements View.OnClickList
     @Override
     public void onStart() {
 
-        //Verificar se já está logado aqui.
+        if (easySharedPreferences.getStringFromKey(this.getContext(), "token").equals(null) ||
+                easySharedPreferences.getStringFromKey(this.getContext(), "token").equals("")) {
+            Intent intentPassword = new Intent(this.getContext(), NotLoginActivity.class);
+            startActivity(intentPassword);
+        } else {
 
-        super.onStart();
-        EventBus.getDefault().register(this);
-        initRecycler();
-        //getMurals();
-        tryOcorrencia();
+            super.onStart();
+            EventBus.getDefault().register(this);
+            initRecycler();
+            //getMurals();
+            tryOcorrencia();
+        }
     }
 
     @Override
