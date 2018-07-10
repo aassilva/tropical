@@ -34,6 +34,10 @@
         <meta-data
             android:name="com.google.android.geo.API_KEY"
             android:value="AIzaSyCFZh1p92O0kfTeF0N1p7kvYLHN57ND5uY" />
+<activity android:name=".presenter.activity.LoginActivity"></activity>
+        <activity android:name=".presenter.activity.RegistroActivity" />
+        <activity android:name=".RecuperarSenhaActivity" />
+        <activity android:name=".NotLoginActivity"></activity>
     </application>
 
 </manifest>
