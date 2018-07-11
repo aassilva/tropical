@@ -33,13 +33,11 @@ import gt.dsdm.es.inf.br.ufg.gt_app.presenter.BaseFragment;
 import gt.dsdm.es.inf.br.ufg.gt_app.presenter.activity.Activity_criar_ocorrencia;
 import gt.dsdm.es.inf.br.ufg.gt_app.presenter.activity.NotLoginActivity;
 import gt.dsdm.es.inf.br.ufg.gt_app.presenter.activity.OcorrenciaActivity;
+import gt.dsdm.es.inf.br.ufg.gt_app.utils.UserUtils;
+import gt.dsdm.es.inf.br.ufg.gt_app.web.WebConnection;
 import gt.dsdm.es.inf.br.ufg.gt_app.web.WebOcorrencia;
 
-
-/**
- * A simple {@link Fragment} subclass.
- */
-public class OcorrenciaFragment extends BaseFragment implements View.OnClickListener{
+public class OcorrenciaFragment extends BaseFragment implements View.OnClickListener, WebConnection.onRegisterResponse {
 
     private List<Ocorrencia> ocorrenciaList;
     private AdapterOcorrencia adapter;
@@ -47,9 +45,7 @@ public class OcorrenciaFragment extends BaseFragment implements View.OnClickList
     private EasySharedPreferences easySharedPreferences = new EasySharedPreferences();
     private Context context;
 
-    public OcorrenciaFragment() {
-        // Required empty public constructor
-    }
+    public OcorrenciaFragment() {}
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
@@ -73,12 +69,14 @@ public class OcorrenciaFragment extends BaseFragment implements View.OnClickList
     @Override
     public void onStart() {
 
-        if (easySharedPreferences.getStringFromKey(context, "token").equals(null) ||
-                easySharedPreferences.getStringFromKey(context, "token").equals("")) {
-            Intent intentPassword = new Intent(this.getContext(), NotLoginActivity.class);
-            startActivity(intentPassword);
-            super.onStart();
-        } else {
+//        if (easySharedPreferences.getStringFromKey(context, "token").equals(null) ||
+//                easySharedPreferences.getStringFromKey(context, "token").equals("")) {
+//        if(UserUtils.isLoged(this.getContext())){
+//            //Não está logado
+//            Intent intentPassword = new Intent(this.getContext(), NotLoginActivity.class);
+//            startActivity(intentPassword);
+//            super.onStart();
+//        } else {
 
 
             EventBus.getDefault().register(this);
@@ -86,7 +84,7 @@ public class OcorrenciaFragment extends BaseFragment implements View.OnClickList
             //getMurals();
             tryOcorrencia();
             super.onStart();
-        }
+//        }
 
 
     }
@@ -132,7 +130,7 @@ public class OcorrenciaFragment extends BaseFragment implements View.OnClickList
 
     //Colocar aqui para pegar o token do usuário---------------------------------------------
     private void tryOcorrencia() {
-        WebOcorrencia webOcorrencia = new WebOcorrencia("us123ur8");
+        WebOcorrencia webOcorrencia = new WebOcorrencia("us123ur8", this);
 
         webOcorrencia.call();
     }
@@ -168,5 +166,10 @@ public class OcorrenciaFragment extends BaseFragment implements View.OnClickList
         if(view.getId() == fabAddOc.getId()){
             getActivity().startActivity(new Intent(getActivity(), Activity_criar_ocorrencia.class));
         }
+    }
+
+    @Override
+    public void handleResponse() {
+
     }
 }

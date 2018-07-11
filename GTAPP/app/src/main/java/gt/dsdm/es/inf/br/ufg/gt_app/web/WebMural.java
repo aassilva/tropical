@@ -22,8 +22,8 @@ public class WebMural extends WebConnection {
 
     private static final String SERVICE = "mural/";
 
-    public WebMural(){
-        super(SERVICE);
+    public WebMural(onRegisterResponse handler){
+        super(SERVICE, handler);
     }
 
     @Override

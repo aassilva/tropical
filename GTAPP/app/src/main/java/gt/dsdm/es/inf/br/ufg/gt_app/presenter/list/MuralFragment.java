@@ -28,13 +28,14 @@ import gt.dsdm.es.inf.br.ufg.gt_app.model.Mural;
 import gt.dsdm.es.inf.br.ufg.gt_app.persistencia.MuralDAO;
 import gt.dsdm.es.inf.br.ufg.gt_app.presenter.BaseFragment;
 import gt.dsdm.es.inf.br.ufg.gt_app.presenter.activity.NoticiasActivity;
+import gt.dsdm.es.inf.br.ufg.gt_app.web.WebConnection;
 import gt.dsdm.es.inf.br.ufg.gt_app.web.WebMural;
 
 
 /**
  * A simple {@link Fragment} subclass.
  */
-public class MuralFragment extends BaseFragment {
+public class MuralFragment extends BaseFragment implements WebConnection.onRegisterResponse {
 
     private List<Mural> muralList;
     private AdapterMural adapter;
@@ -103,7 +104,7 @@ public class MuralFragment extends BaseFragment {
     }
 
     private void tryMural() {
-        WebMural webMural = new WebMural();
+        WebMural webMural = new WebMural(this);
 
         webMural.call();
     }
@@ -133,4 +134,8 @@ public class MuralFragment extends BaseFragment {
         startActivity(intent);
     }
 
+    @Override
+    public void handleResponse() {
+
+    }
 }

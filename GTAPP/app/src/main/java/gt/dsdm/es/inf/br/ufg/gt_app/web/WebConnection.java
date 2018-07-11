@@ -22,9 +22,11 @@ public abstract class WebConnection {
     public static final MediaType JSON
             = MediaType.parse("application/json; charset=utf-8");
     private String serviceName;
+    private onRegisterResponse handler;
 
-    public WebConnection(String serviceName){
+    public WebConnection(String serviceName, onRegisterResponse handler){
         this.serviceName = serviceName;
+        this.handler = handler;
     }
 
     public void call() {
@@ -64,8 +66,13 @@ public abstract class WebConnection {
             @Override
             public void onResponse(Call call, Response response) throws IOException {
                 handleResponse(response);
+                handle();
             }
         });
+    }
+
+    void handle(){
+        handler.handleResponse();
     }
 
     public String getUrl(){
@@ -76,10 +83,14 @@ public abstract class WebConnection {
 
     abstract HttpMethod getMethod();
 
-    abstract void handleResponse(Response response);
+    void handleResponse(Response response) { }
 
     protected enum HttpMethod {
         GET,POST,PATCH,DELETE,PUT;
+    }
+
+    public interface onRegisterResponse{
+        void handleResponse();
     }
 
 }

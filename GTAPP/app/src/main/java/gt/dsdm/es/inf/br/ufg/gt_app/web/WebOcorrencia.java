@@ -22,8 +22,8 @@ public class WebOcorrencia extends WebConnection {
 
     private static String SERVICE = "ocorrencia/";
 
-    public WebOcorrencia(String token){
-        super(SERVICE + token);
+    public WebOcorrencia(String token, onRegisterResponse handler){
+        super(SERVICE + token, handler);
     }
 
     @Override

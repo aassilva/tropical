@@ -20,8 +20,8 @@ public class WebLogin extends WebConnection {
     private String email;
     private String password;
 
-    public WebLogin(String email, String password){
-        super(SERVICE);
+    public WebLogin(String email, String password, onRegisterResponse handler){
+        super(SERVICE, handler);
         this.email = email;
         this.password = password;
     }

@@ -17,10 +17,11 @@ import org.greenrobot.eventbus.ThreadMode;
 
 import gt.dsdm.es.inf.br.ufg.gt_app.MainActivity;
 import gt.dsdm.es.inf.br.ufg.gt_app.R;
+import gt.dsdm.es.inf.br.ufg.gt_app.web.WebConnection;
 import gt.dsdm.es.inf.br.ufg.gt_app.web.WebRegistro;
 import gt.dsdm.es.inf.br.ufg.gt_app.web.login.WebError;
 
-public class RegistroActivity extends AppCompatActivity {
+public class RegistroActivity extends AppCompatActivity implements WebConnection.onRegisterResponse {
 
     MaterialDialog dialog;
 
@@ -34,9 +35,7 @@ public class RegistroActivity extends AppCompatActivity {
         buttonClose.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intentPassword = new Intent(getApplicationContext(),
-                        MainActivity.class);
-                startActivity(intentPassword);
+                finish();
             }
         });
 
@@ -98,7 +97,7 @@ public class RegistroActivity extends AppCompatActivity {
 
     private void sendCredentials(String nome, String cpf, String telefone,
                                  String email, String usuario, String pass) {
-        WebRegistro taskRegistro = new WebRegistro(nome, cpf, telefone, email, usuario, pass);
+        WebRegistro taskRegistro = new WebRegistro(nome, cpf, telefone, email, usuario, pass, this);
         taskRegistro.call();
     }
 
@@ -110,7 +109,6 @@ public class RegistroActivity extends AppCompatActivity {
                 .show();
     }
 
-
     @Subscribe
     public void onEvent(WebError error){
         hideLoading();
@@ -119,10 +117,18 @@ public class RegistroActivity extends AppCompatActivity {
                 Snackbar.LENGTH_LONG).show();
     }
 
-    private void hideLoading(){
+    void hideLoading(){
         if(dialog != null && dialog.isShowing()){
-            dialog.hide();
-            dialog = null;
+            runOnUiThread(new Runnable() {
+
+                @Override
+                public void run() {
+
+                    dialog.hide();
+                    dialog = null;
+                }
+            });
+
         }
     }
 
@@ -132,5 +138,10 @@ public class RegistroActivity extends AppCompatActivity {
             Intent intent = new Intent(this, MainActivity.class);
             startActivity(intent);
         }
+    }
+
+    @Override
+    public void handleResponse() {
+        hideLoading();
     }
 }

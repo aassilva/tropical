@@ -27,9 +27,9 @@ public class WebRegistro extends WebConnection {
     private String FIELD_PASS = "senha";
 
     public  WebRegistro(String nome, String cpf, String telefone,
-                        String email, String usuario, String pass) {
+                        String email, String usuario, String pass, onRegisterResponse handler) {
 
-        super(SERVICE);
+        super(SERVICE, handler);
         this.nome = nome;
         this.cpf = cpf;
         this.telefone = telefone;

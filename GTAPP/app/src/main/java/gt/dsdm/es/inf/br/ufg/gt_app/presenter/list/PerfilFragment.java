@@ -61,15 +61,15 @@ public class PerfilFragment extends Fragment {
     @Override
     public void onStart() {
 
-        if (easySharedPreferences.getStringFromKey(context, "token").equals(null) ||
-                easySharedPreferences.getStringFromKey(context, "token").equals("")) {
-            Intent intentPassword = new Intent(this.getContext(), NotLoginActivity.class);
-            startActivity(intentPassword);
-            super.onStart();
-        } else {
+//        if (easySharedPreferences.getStringFromKey(context, "token").equals(null) ||
+//                easySharedPreferences.getStringFromKey(context, "token").equals("")) {
+//            Intent intentPassword = new Intent(this.getContext(), NotLoginActivity.class);
+//            startActivity(intentPassword);
+//            super.onStart();
+//        } else {
             tryPerfil();
             super.onStart();
-        }
+//        }
 
     }
 

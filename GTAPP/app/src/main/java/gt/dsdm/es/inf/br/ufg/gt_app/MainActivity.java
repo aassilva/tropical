@@ -1,15 +1,20 @@
 package gt.dsdm.es.inf.br.ufg.gt_app;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.design.widget.BottomNavigationView;
 import android.support.v4.app.Fragment;
 import android.support.v7.app.AppCompatActivity;
 import android.view.MenuItem;
+import android.view.View;
 
+import gt.dsdm.es.inf.br.ufg.gt_app.presenter.activity.LoginActivity;
 import gt.dsdm.es.inf.br.ufg.gt_app.presenter.list.MuralFragment;
+import gt.dsdm.es.inf.br.ufg.gt_app.presenter.list.NotLogedFragment;
 import gt.dsdm.es.inf.br.ufg.gt_app.presenter.list.OcorrenciaFragment;
 import gt.dsdm.es.inf.br.ufg.gt_app.presenter.list.PerfilFragment;
+import gt.dsdm.es.inf.br.ufg.gt_app.utils.UserUtils;
 
 public class MainActivity extends AppCompatActivity
         implements BottomNavigationView.OnNavigationItemSelectedListener{
@@ -50,13 +55,24 @@ public class MainActivity extends AppCompatActivity
                 break;
 
             case R.id.navigation_dashboard:
-                fragment = new OcorrenciaFragment();
+                if(UserUtils.isLoged(this))
+                    fragment = new OcorrenciaFragment();
+                else
+                    fragment = new NotLogedFragment();
                 break;
 
             case R.id.navigation_notifications:
-                fragment = new PerfilFragment();
+                if(UserUtils.isLoged(this))
+                    fragment = new PerfilFragment();
+                else
+                fragment = new NotLogedFragment();
                 break;
         }
         return loadFragment(fragment);
+    }
+
+    public void login(View view){
+        Intent intent = new Intent(this, LoginActivity.class);
+        startActivity(intent);
     }
 }
