@@ -8,9 +8,11 @@ import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import gt.dsdm.es.inf.br.ufg.gt_app.AtualizarPerfilActivity;
 import gt.dsdm.es.inf.br.ufg.gt_app.MainActivity;
 import gt.dsdm.es.inf.br.ufg.gt_app.R;
 import gt.dsdm.es.inf.br.ufg.gt_app.persistencia.EasySharedPreferences;
@@ -47,6 +49,8 @@ public class PerfilFragment extends Fragment {
                 startActivity(intent);
             }
         });
+
+        setupButtonRegister();
 
         return view;
 
@@ -88,6 +92,19 @@ public class PerfilFragment extends Fragment {
 
         TextView email = (TextView) view.findViewById(R.id.label_task_email);
         email.setText(easySharedPreferences.getStringFromKey(this.getContext(), "email"));
+    }
+
+    private void setupButtonRegister() {
+        Button buttonRegister =
+                view.findViewById(R.id.button_atualizar);
+        buttonRegister.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(view.getContext(),
+                        AtualizarPerfilActivity.class);
+                startActivity(intent);
+            }
+        });
     }
 
 }

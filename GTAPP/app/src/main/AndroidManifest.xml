@@ -39,7 +39,8 @@
         <activity android:name=".RecuperarSenhaActivity" />
         <activity android:name=".presenter.activity.NotLoginActivity" />
         <activity android:name=".presenter.activity.NoticiasActivity" />
-        <activity android:name=".presenter.activity.OcorrenciaActivity"></activity>
+        <activity android:name=".presenter.activity.OcorrenciaActivity" />
+        <activity android:name=".AtualizarPerfilActivity"></activity>
     </application>
 
 </manifest>

@@ -32,4 +32,7 @@
     <string name="usuario">Usuário:</string>
     <string name="telefone">Telefone:</string>
     <string name="email">E-mail:</string>
+    <string name="button_aualizar">ATUALIZAR DADOS</string>
+    <string name="button_dados_atualizar">EDITAR PERFIL</string>
+    <string name="hint_password_nova">Nova senha:</string>
 </resources>
