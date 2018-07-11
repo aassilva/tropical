@@ -3,7 +3,20 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".PerfilFragment">
+    android:layout_marginLeft="10dp"
+    android:layout_marginRight="10dp"
+    android:layout_marginTop="10dp"
+    tools:context=".presenter.list.PerfilFragment">
+
+    <ImageView
+        android:id="@+id/button_logoff"
+        android:layout_width="32dp"
+        android:layout_height="32dp"
+        android:layout_alignParentRight="true"
+        android:layout_alignParentTop="true"
+        android:background="@null"
+        android:src="@drawable/ic_exit_to_app_black_24dp"
+        />
 
     <TextView
         android:id="@+id/nome"

@@ -6,6 +6,7 @@
  */
 package gt.dsdm.es.inf.br.ufg.gt_app.presenter.list;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.support.v7.widget.LinearLayoutManager;
@@ -26,6 +27,7 @@ import gt.dsdm.es.inf.br.ufg.gt_app.R;
 import gt.dsdm.es.inf.br.ufg.gt_app.model.Mural;
 import gt.dsdm.es.inf.br.ufg.gt_app.persistencia.MuralDAO;
 import gt.dsdm.es.inf.br.ufg.gt_app.presenter.BaseFragment;
+import gt.dsdm.es.inf.br.ufg.gt_app.presenter.activity.NoticiasActivity;
 import gt.dsdm.es.inf.br.ufg.gt_app.web.WebMural;
 
 
@@ -121,9 +123,14 @@ public class MuralFragment extends BaseFragment {
 
     @Subscribe(threadMode = ThreadMode.MAIN)
     public void onMessageEvent(Mural murals) {
-        MuralDAO dao = new MuralDAO(getActivity());
-        adapter.setMural(dao.getAll());
-        adapter.notifyDataSetChanged();
+//        MuralDAO dao = new MuralDAO(getActivity());
+//        adapter.setMural(dao.getAll());
+//        adapter.notifyDataSetChanged();
+        Intent intent = new Intent(getContext(), NoticiasActivity.class);
+        EventBus.getDefault().unregister(this);
+        EventBus.getDefault().postSticky(murals);
+
+        startActivity(intent);
     }
 
 }

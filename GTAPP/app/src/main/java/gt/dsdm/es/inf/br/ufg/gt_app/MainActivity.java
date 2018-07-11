@@ -9,6 +9,7 @@ import android.view.MenuItem;
 
 import gt.dsdm.es.inf.br.ufg.gt_app.presenter.list.MuralFragment;
 import gt.dsdm.es.inf.br.ufg.gt_app.presenter.list.OcorrenciaFragment;
+import gt.dsdm.es.inf.br.ufg.gt_app.presenter.list.PerfilFragment;
 
 public class MainActivity extends AppCompatActivity
         implements BottomNavigationView.OnNavigationItemSelectedListener{

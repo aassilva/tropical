@@ -6,6 +6,7 @@
  */
 package gt.dsdm.es.inf.br.ufg.gt_app.presenter.list;
 
+import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
@@ -31,6 +32,7 @@ import gt.dsdm.es.inf.br.ufg.gt_app.persistencia.OcorrenciaDAO;
 import gt.dsdm.es.inf.br.ufg.gt_app.presenter.BaseFragment;
 import gt.dsdm.es.inf.br.ufg.gt_app.presenter.activity.Activity_criar_ocorrencia;
 import gt.dsdm.es.inf.br.ufg.gt_app.presenter.activity.NotLoginActivity;
+import gt.dsdm.es.inf.br.ufg.gt_app.presenter.activity.OcorrenciaActivity;
 import gt.dsdm.es.inf.br.ufg.gt_app.web.WebOcorrencia;
 
 
@@ -43,6 +45,7 @@ public class OcorrenciaFragment extends BaseFragment implements View.OnClickList
     private AdapterOcorrencia adapter;
     private FloatingActionButton fabAddOc;
     private EasySharedPreferences easySharedPreferences = new EasySharedPreferences();
+    private Context context;
 
     public OcorrenciaFragment() {
         // Required empty public constructor
@@ -62,20 +65,30 @@ public class OcorrenciaFragment extends BaseFragment implements View.OnClickList
     }
 
     @Override
+    public void onAttach(Context context) {
+        this.context = context;
+        super.onAttach(context);
+    }
+
+    @Override
     public void onStart() {
 
-        if (easySharedPreferences.getStringFromKey(this.getContext(), "token").equals(null) ||
-                easySharedPreferences.getStringFromKey(this.getContext(), "token").equals("")) {
+        if (easySharedPreferences.getStringFromKey(context, "token").equals(null) ||
+                easySharedPreferences.getStringFromKey(context, "token").equals("")) {
             Intent intentPassword = new Intent(this.getContext(), NotLoginActivity.class);
             startActivity(intentPassword);
+            super.onStart();
         } else {
 
-            super.onStart();
+
             EventBus.getDefault().register(this);
             initRecycler();
             //getMurals();
             tryOcorrencia();
+            super.onStart();
         }
+
+
     }
 
     @Override
@@ -139,9 +152,15 @@ public class OcorrenciaFragment extends BaseFragment implements View.OnClickList
 
     @Subscribe(threadMode = ThreadMode.MAIN)
     public void onMessageEvent(Ocorrencia ocorrencia) {
-        OcorrenciaDAO dao = new OcorrenciaDAO(getActivity());
-        adapter.setOcorrencia(dao.getAll());
-        adapter.notifyDataSetChanged();
+//        OcorrenciaDAO dao = new OcorrenciaDAO(getActivity());
+//        adapter.setOcorrencia(dao.getAll());
+//        adapter.notifyDataSetChanged();
+
+        Intent intent = new Intent(getContext(), OcorrenciaActivity.class);
+        EventBus.getDefault().unregister(this);
+        EventBus.getDefault().postSticky(ocorrencia);
+
+        startActivity(intent);
     }
 
     @Override

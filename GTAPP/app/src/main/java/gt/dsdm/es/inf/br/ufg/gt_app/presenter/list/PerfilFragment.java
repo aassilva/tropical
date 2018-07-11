@@ -1,14 +1,18 @@
-package gt.dsdm.es.inf.br.ufg.gt_app;
+package gt.dsdm.es.inf.br.ufg.gt_app.presenter.list;
 
 
+import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageView;
 import android.widget.TextView;
 
+import gt.dsdm.es.inf.br.ufg.gt_app.MainActivity;
+import gt.dsdm.es.inf.br.ufg.gt_app.R;
 import gt.dsdm.es.inf.br.ufg.gt_app.persistencia.EasySharedPreferences;
 import gt.dsdm.es.inf.br.ufg.gt_app.presenter.activity.NotLoginActivity;
 
@@ -20,6 +24,7 @@ public class PerfilFragment extends Fragment {
 
     private EasySharedPreferences easySharedPreferences = new EasySharedPreferences();
     private View view;
+    private Context context;
 
     public PerfilFragment() {
         // Required empty public constructor
@@ -32,21 +37,40 @@ public class PerfilFragment extends Fragment {
         // Inflate the layout for this fragment
         view = inflater.inflate(R.layout.fragment_perfil, container, false);
 
+        ImageView buttonClose = view.findViewById(R.id.button_logoff);
+
+        buttonClose.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                easySharedPreferences.setStringFromKey(context, "token", null);
+                Intent intent = new Intent(context, MainActivity.class);
+                startActivity(intent);
+            }
+        });
+
         return view;
 
     }
 
     @Override
+    public void onAttach(Context context) {
+        this.context = context;
+        super.onAttach(context);
+    }
+
+    @Override
     public void onStart() {
 
-        if (easySharedPreferences.getStringFromKey(this.getContext(), "token").equals(null) ||
-                easySharedPreferences.getStringFromKey(this.getContext(), "token").equals("")) {
+        if (easySharedPreferences.getStringFromKey(context, "token").equals(null) ||
+                easySharedPreferences.getStringFromKey(context, "token").equals("")) {
             Intent intentPassword = new Intent(this.getContext(), NotLoginActivity.class);
             startActivity(intentPassword);
+            super.onStart();
         } else {
             tryPerfil();
             super.onStart();
         }
+
     }
 
     public void tryPerfil()  {

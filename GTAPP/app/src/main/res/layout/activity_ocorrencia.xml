@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".presenter.activity.OcorrenciaActivity">
+
+    <LinearLayout
+        android:id="@+id/container_form"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="16dp"
+        android:layout_marginRight="16dp"
+        android:layout_marginTop="16dp"
+        android:background="#DCDCDC"
+        android:padding="8dp"
+        android:orientation="vertical">
+
+        <TextView
+            android:id="@+id/label_task_id_ocorrencia_oc"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textSize="22sp"
+            />
+
+        <TextView
+            android:id="@+id/label_task_title_ocorrencia_oc"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textSize="22sp"
+            />
+
+        <TextView
+            android:id="@+id/label_task_desc_ocorrencia_oc"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textSize="22sp"
+            />
+
+
+        <TextView
+            android:id="@+id/label_task_status_ocorrencia_oc"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textSize="18sp" />
+
+
+    </LinearLayout>
+
+</LinearLayout>
