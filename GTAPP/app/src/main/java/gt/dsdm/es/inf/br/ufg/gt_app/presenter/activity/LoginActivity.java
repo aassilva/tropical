@@ -17,9 +17,7 @@ import org.greenrobot.eventbus.ThreadMode;
 
 import gt.dsdm.es.inf.br.ufg.gt_app.MainActivity;
 import gt.dsdm.es.inf.br.ufg.gt_app.R;
-import gt.dsdm.es.inf.br.ufg.gt_app.RecuperarSenhaActivity;
 import gt.dsdm.es.inf.br.ufg.gt_app.model.Usuario;
-import gt.dsdm.es.inf.br.ufg.gt_app.persistencia.EasySharedPreferences;
 import gt.dsdm.es.inf.br.ufg.gt_app.utils.UserUtils;
 import gt.dsdm.es.inf.br.ufg.gt_app.web.login.WebError;
 import gt.dsdm.es.inf.br.ufg.gt_app.web.login.WebTaskLogin;

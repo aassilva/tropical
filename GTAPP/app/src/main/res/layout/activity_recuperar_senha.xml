@@ -1,8 +1,48 @@
 <?xml version="1.0" encoding="utf-8"?>
-<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".RecuperarSenhaActivity">
+    tools:context=".presenter.activity.RecuperarSenhaActivity">
 
-</android.support.constraint.ConstraintLayout>
+    <TextView
+        android:id="@+id/msg_recuperar"
+        android:text="@string/msg_recuperar"
+        android:layout_marginTop="105dp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:textStyle="bold"
+        android:textSize="18sp"
+        android:gravity="center"
+        />
+
+    <android.support.design.widget.TextInputLayout
+        android:id="@+id/container_recuperar_email"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/msg_recuperar"
+        android:layout_marginTop="25dp"
+        >
+
+        <EditText
+            android:id="@+id/input_recuperar_email"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="@string/hint_email"
+            android:inputType="textEmailAddress"
+            android:textColor="@color/colorPrimaryDark" />
+
+    </android.support.design.widget.TextInputLayout>
+
+    <Button
+        android:id="@+id/button_recuperar"
+        android:layout_below="@id/container_recuperar_email"
+        android:layout_width="match_parent"
+        android:layout_height="48dp"
+        android:background="@color/colorPrimaryDark"
+        android:text="@string/button_recuperar"
+        android:textColor="@color/white"
+        android:layout_marginTop="25dp"
+        />
+
+</RelativeLayout>

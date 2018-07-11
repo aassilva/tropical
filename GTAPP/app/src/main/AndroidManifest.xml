@@ -27,7 +27,7 @@
         </activity>
         <activity android:name=".presenter.activity.LoginActivity" />
         <activity android:name=".presenter.activity.RegistroActivity" />
-        <activity android:name=".RecuperarSenhaActivity" />
+        <activity android:name=".presenter.activity.RecuperarSenhaActivity" />
         <activity android:name=".presenter.activity.Activity_criar_ocorrencia" />
 
         <meta-data
@@ -36,11 +36,11 @@
 
         <activity android:name=".presenter.activity.LoginActivity" />
         <activity android:name=".presenter.activity.RegistroActivity" />
-        <activity android:name=".RecuperarSenhaActivity" />
+        <activity android:name=".presenter.activity.RecuperarSenhaActivity" />
         <activity android:name=".presenter.activity.NotLoginActivity" />
         <activity android:name=".presenter.activity.NoticiasActivity" />
         <activity android:name=".presenter.activity.OcorrenciaActivity" />
-        <activity android:name=".AtualizarPerfilActivity"></activity>
+        <activity android:name=".presenter.activity.AtualizarPerfilActivity"></activity>
     </application>
 
 </manifest>

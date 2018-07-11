@@ -12,11 +12,10 @@ import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
 
-import gt.dsdm.es.inf.br.ufg.gt_app.AtualizarPerfilActivity;
+import gt.dsdm.es.inf.br.ufg.gt_app.presenter.activity.AtualizarPerfilActivity;
 import gt.dsdm.es.inf.br.ufg.gt_app.MainActivity;
 import gt.dsdm.es.inf.br.ufg.gt_app.R;
 import gt.dsdm.es.inf.br.ufg.gt_app.persistencia.EasySharedPreferences;
-import gt.dsdm.es.inf.br.ufg.gt_app.presenter.activity.NotLoginActivity;
 
 
 /**

@@ -22,12 +22,13 @@
     <TextView
         android:id="@+id/nome"
         android:text="@string/nome"
-        android:layout_marginTop="15dp"
+        android:layout_marginTop="25dp"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:maxLines="2"
         android:textStyle="bold"
         android:textSize="18sp"
+        android:layout_below="@+id/button_atualizar"
         />
     <TextView
         android:id="@+id/label_task_nome"
@@ -126,14 +127,13 @@
 
     <Button
         android:id="@+id/button_atualizar"
-        android:layout_width="match_parent"
+        android:layout_width="wrap_content"
         android:layout_height="48dp"
         android:background="@color/colorPrimaryDark"
         android:text="@string/button_dados_atualizar"
         android:textColor="@color/white"
-        android:layout_below="@+id/label_task_email"
-        android:layout_marginTop="25dp"
-        android:gravity="center"
+        android:paddingLeft="15dp"
+        android:paddingRight="15dp"
         />
 
 </RelativeLayout>

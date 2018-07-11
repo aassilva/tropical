@@ -83,6 +83,9 @@ public class OcorrenciaFragment extends BaseFragment implements View.OnClickList
             initRecycler();
             //getMurals();
             tryOcorrencia();
+            OcorrenciaDAO ocorrenciaDAO = new OcorrenciaDAO(getContext());
+            ArrayList<Ocorrencia> ocorrencias = (ArrayList<Ocorrencia>) ocorrenciaDAO.getAll();
+            EventBus.getDefault().post(ocorrencias);
             super.onStart();
 //        }
 
@@ -146,6 +149,10 @@ public class OcorrenciaFragment extends BaseFragment implements View.OnClickList
         dismissDialog();
         adapter.setOcorrencia(ocorrencias);
         adapter.notifyDataSetChanged();
+        OcorrenciaDAO dao = new OcorrenciaDAO(getContext());
+        for (Ocorrencia ocorrencia : ocorrencias) {
+            dao.create(ocorrencia);
+        }
     }
 
     @Subscribe(threadMode = ThreadMode.MAIN)

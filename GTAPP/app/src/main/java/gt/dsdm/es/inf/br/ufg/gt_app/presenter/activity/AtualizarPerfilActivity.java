@@ -1,4 +1,4 @@
-package gt.dsdm.es.inf.br.ufg.gt_app;
+package gt.dsdm.es.inf.br.ufg.gt_app.presenter.activity;
 
 import android.content.Context;
 import android.content.Intent;
@@ -16,6 +16,8 @@ import org.greenrobot.eventbus.EventBus;
 import org.greenrobot.eventbus.Subscribe;
 import org.greenrobot.eventbus.ThreadMode;
 
+import gt.dsdm.es.inf.br.ufg.gt_app.MainActivity;
+import gt.dsdm.es.inf.br.ufg.gt_app.R;
 import gt.dsdm.es.inf.br.ufg.gt_app.model.Usuario;
 import gt.dsdm.es.inf.br.ufg.gt_app.persistencia.EasySharedPreferences;
 import gt.dsdm.es.inf.br.ufg.gt_app.utils.UserUtils;

@@ -35,4 +35,6 @@
     <string name="button_aualizar">ATUALIZAR DADOS</string>
     <string name="button_dados_atualizar">EDITAR PERFIL</string>
     <string name="hint_password_nova">Nova senha:</string>
+    <string name="msg_recuperar">Você receberar por e-mail o link e as instruções para recuperar a senha. Para isso informe o e-mail cadastrado no campo abaixo e clique em \"recuperar senha\".</string>
+    <string name="button_recuperar">recuperar senha</string>
 </resources>
