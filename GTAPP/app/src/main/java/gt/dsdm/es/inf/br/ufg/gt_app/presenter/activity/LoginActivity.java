@@ -20,6 +20,7 @@ import gt.dsdm.es.inf.br.ufg.gt_app.R;
 import gt.dsdm.es.inf.br.ufg.gt_app.RecuperarSenhaActivity;
 import gt.dsdm.es.inf.br.ufg.gt_app.model.Usuario;
 import gt.dsdm.es.inf.br.ufg.gt_app.persistencia.EasySharedPreferences;
+import gt.dsdm.es.inf.br.ufg.gt_app.utils.UserUtils;
 import gt.dsdm.es.inf.br.ufg.gt_app.web.login.WebError;
 import gt.dsdm.es.inf.br.ufg.gt_app.web.login.WebTaskLogin;
 
@@ -80,10 +81,6 @@ public class LoginActivity extends AppCompatActivity {
                 Intent intent = new Intent(getApplicationContext(),
                         RegistroActivity.class);
                 startActivity(intent);
-//                Intent openUrlIntent = new Intent(Intent.ACTION_VIEW);
-//                openUrlIntent.setData(
-//                        Uri.parse("http://www.pudim.com.br"));
-//                startActivity(openUrlIntent);
             }
         });
     }
@@ -128,36 +125,10 @@ public class LoginActivity extends AppCompatActivity {
 
     @Subscribe(threadMode = ThreadMode.MAIN)
     public void onMessageEvent(Usuario response) {
-        EasySharedPreferences easySharedPreferences = new EasySharedPreferences();
-        easySharedPreferences.setStringFromKey(this, "usuario", response.getUsuario());
-        easySharedPreferences.setStringFromKey(this, "nome", response.getNome());
-        easySharedPreferences.setStringFromKey(this, "cpf", response.getCpf());
-        easySharedPreferences.setStringFromKey(this, "telefone", response.getTelefone());
-        easySharedPreferences.setStringFromKey(this, "email", response.getEmail());
-        easySharedPreferences.setStringFromKey(this, "token", response.getToken());
-
+        UserUtils.saveUser(response, this);
         Intent intent = new Intent(this, MainActivity.class);
         startActivity(intent);
     }
-
-//    @Subscribe
-//    public void onEvent(Usuario response){
-////        hideLoading();
-////        Intent openUrlIntent = new Intent(Intent.ACTION_VIEW);
-////        openUrlIntent.setData(
-////                Uri.parse("http://www.freescreencleaner.com/"));
-////        startActivity(openUrlIntent);
-//        EasySharedPreferences easySharedPreferences = new EasySharedPreferences();
-//        easySharedPreferences.setStringFromKey(this, "usuario", response.getUsuario());
-//        easySharedPreferences.setStringFromKey(this, "nome", response.getNome());
-//        easySharedPreferences.setStringFromKey(this, "cpf", response.getCpf());
-//        easySharedPreferences.setStringFromKey(this, "telefone", response.getTelefone());
-//        easySharedPreferences.setStringFromKey(this, "email", response.getEmail());
-//        easySharedPreferences.setStringFromKey(this, "token", response.getToken());
-//
-//        Intent intent = new Intent(this, MainActivity.class);
-//        startActivity(intent);
-//    }
 
     @Subscribe
     public void onEvent(WebError error){

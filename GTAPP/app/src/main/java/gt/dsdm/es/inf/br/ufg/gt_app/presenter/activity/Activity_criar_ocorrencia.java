@@ -100,8 +100,6 @@ public class Activity_criar_ocorrencia extends AppCompatActivity implements OnMa
 
         googleMap.setMyLocationEnabled(true);
 
-
-
         googleMap.setOnMapClickListener(new GoogleMap.OnMapClickListener() {
             @Override
             public void onMapClick(LatLng latLng) {
@@ -135,6 +133,9 @@ public class Activity_criar_ocorrencia extends AppCompatActivity implements OnMa
                             latitude+"|"+longitude,
                             spinnerCategorias.getSelectedItem().toString()), this);
             request.execute();
+
+            Toast.makeText(this, "Ocorrência criada com sucesso!", Toast.LENGTH_SHORT).show();
+            finish();
         }
     }
 

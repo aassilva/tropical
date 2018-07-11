@@ -17,6 +17,8 @@ import org.greenrobot.eventbus.ThreadMode;
 
 import gt.dsdm.es.inf.br.ufg.gt_app.MainActivity;
 import gt.dsdm.es.inf.br.ufg.gt_app.R;
+import gt.dsdm.es.inf.br.ufg.gt_app.model.Usuario;
+import gt.dsdm.es.inf.br.ufg.gt_app.utils.UserUtils;
 import gt.dsdm.es.inf.br.ufg.gt_app.web.WebConnection;
 import gt.dsdm.es.inf.br.ufg.gt_app.web.WebRegistro;
 import gt.dsdm.es.inf.br.ufg.gt_app.web.login.WebError;
@@ -24,6 +26,12 @@ import gt.dsdm.es.inf.br.ufg.gt_app.web.login.WebError;
 public class RegistroActivity extends AppCompatActivity implements WebConnection.onRegisterResponse {
 
     MaterialDialog dialog;
+    EditText editTextName;
+    EditText editTextCPF;
+    EditText editTextTelefone;
+    EditText editTextEmail;
+    EditText editTextUsuario;
+    EditText editTextPassword;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -41,14 +49,14 @@ public class RegistroActivity extends AppCompatActivity implements WebConnection
 
         setupRegister();
 
-    }
+        editTextName = findViewById(R.id.input_name);
+        editTextCPF = findViewById(R.id.input_cpf);
+        editTextTelefone = findViewById(R.id.input_telefone);
+        editTextEmail = findViewById(R.id.input_email);
+        editTextUsuario = findViewById(R.id.input_usuario);
+        editTextPassword = findViewById(R.id.input_password);
 
-//    @Override
-//    public void onStart() {
-//        super.onStart();
-//        EventBus.getDefault().register(this);
-//
-//    }
+    }
 
     @Override
     protected void onResume() {
@@ -74,12 +82,6 @@ public class RegistroActivity extends AppCompatActivity implements WebConnection
     }
 
     private void tryRegister() {
-        EditText editTextName = findViewById(R.id.input_name);
-        EditText editTextCPF = findViewById(R.id.input_cpf);
-        EditText editTextTelefone = findViewById(R.id.input_telefone);
-        EditText editTextEmail = findViewById(R.id.input_email);
-        EditText editTextUsuario = findViewById(R.id.input_usuario);
-        EditText editTextPassword = findViewById(R.id.input_password);
 
         if(!"".equals(editTextEmail.getText().toString())){
             showLoading();
@@ -118,6 +120,7 @@ public class RegistroActivity extends AppCompatActivity implements WebConnection
     }
 
     void hideLoading(){
+
         if(dialog != null && dialog.isShowing()){
             runOnUiThread(new Runnable() {
 
@@ -126,6 +129,19 @@ public class RegistroActivity extends AppCompatActivity implements WebConnection
 
                     dialog.hide();
                     dialog = null;
+
+                    Usuario usuario = new Usuario();
+                    usuario.setNome(editTextName.getText().toString());
+                    usuario.setCpf(editTextCPF.getText().toString());
+                    usuario.setUsuario(editTextUsuario.getText().toString());
+                    usuario.setTelefone(editTextTelefone.getText().toString());
+                    usuario.setEmail(editTextEmail.getText().toString());
+                    usuario.setToken("aaaaa");
+
+                    UserUtils.saveUser(usuario, RegistroActivity.this);
+
+                    Intent intent = new Intent(RegistroActivity.this, MainActivity.class);
+                    startActivity(intent);
                 }
             });
 

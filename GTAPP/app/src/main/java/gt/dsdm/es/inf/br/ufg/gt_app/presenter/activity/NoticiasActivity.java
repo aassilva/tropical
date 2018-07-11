@@ -3,6 +3,7 @@ package gt.dsdm.es.inf.br.ufg.gt_app.presenter.activity;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.AppCompatImageView;
+import android.view.MenuItem;
 import android.widget.TextView;
 
 import com.squareup.picasso.Picasso;
@@ -22,6 +23,13 @@ public class NoticiasActivity extends AppCompatActivity {
         Mural mural = EventBus.getDefault().removeStickyEvent(Mural.class);
         setupView(mural);
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        if(item.getItemId() == android.R.id.home)
+            finish();
+        return super.onOptionsItemSelected(item);
     }
 
     public void setupView(Mural mural) {
